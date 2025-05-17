@@ -137,6 +137,11 @@
 
   </div>
 
+        <!--Container for system messages sent from the backend-->
+    <div id="system-message">
+        <p>Account created successfully</p>
+    </div>
+
   <!-- Activate Feather Icons -->
   <script>
     feather.replace();
@@ -157,9 +162,6 @@
     .then(response => response.json())
         .then(message => {
           if (message.message) {
-            systemMessage.innerText=message.message;
-            systemMessage.style.opacity='1';
-            setTimeout(closeMessage,2000);
             window.location.href = '/index.html'  
           }
         })
@@ -170,6 +172,10 @@
           setTimeout(closeMessage,2000);
         });
   }
+
+  function closeMessage(){  //Function to close the system message
+    systemMessage.style.opacity='0';
+}
   </script>
 
 </body>
