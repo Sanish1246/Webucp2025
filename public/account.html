@@ -5,6 +5,11 @@
   <title>TheEnd.page – Login / Register</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
   <style>
     @layer utilities {
       .glass {
@@ -12,6 +17,11 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+            .dark .glass {
+        background: rgba(50, 50, 50, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       @keyframes float {
@@ -43,62 +53,68 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22]">
+<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22] dark:bg-gradient-to-br dark:from-[#121212] dark:via-[#2c2c2c] dark:to-[#3f3f3f] dark:text-[#f0e8dc] transition-colors duration-500">
 
   <!-- Navbar -->
-  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 backdrop-saturate-150">
-    <div class="text-2xl font-bold tracking-wide text-[#2D2B22]">TheEnd.page</div>
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] dark:text-[#f0e8dc]">TheEnd.page</div>
     <ul class="flex space-x-6 text-lg font-medium items-center">
       <li>
-        <a href="/public/home.html" class="hover:text-[#747D86] transition" title="Home">
+        <a href="/public/home.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
           <i data-feather="home" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/search.html" class="hover:text-[#747D86] transition" title="Search">
+        <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
           <i data-feather="search" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/account.html" class="hover:text-[#747D86] transition" title="Account">
+        <a href="/public/account.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
           <i data-feather="user" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/public/logout.html" class="hover:text-[#747D86] transition" title="Log Out">
+        <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
           <i data-feather="log-out" class="float-icon"></i>
         </a>
+      </li>
+      <li>
+        <!-- Dark Mode Toggle -->
+        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
+          <i data-feather="moon"></i>
+        </button>
       </li>
     </ul>
   </nav>
 
   <!-- Login/Register Card -->
-  <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150 float-icon">
-    <h2 id="formTitle" class="text-4xl font-extrabold text-center mb-10 text-[#2D2B22] tracking-tight animate-pulse">Welcome Back</h2>
+  <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150 float-icon text-[#2D2B22] dark:text-[#f0e8dc] dark:bg-[rgba(25,25,25,0.6)] transition-colors duration-500">
+    <h2 id="formTitle" class="text-4xl font-extrabold text-center mb-10 tracking-tight animate-pulse">Welcome Back</h2>
 
     <!-- Tab Buttons -->
     <div class="flex justify-center gap-6 mb-10">
-      <button id="loginTab" class="tab-btn px-6 py-2 text-[#2D2B22] font-semibold border-b-2 border-[#2D2B22] hover:text-[#747D86] transition">Login</button>
-      <button id="registerTab" class="tab-btn px-6 py-2 text-[#2D2B22] font-semibold border-b-2 border-transparent hover:border-[#747D86] hover:text-[#747D86] transition">Register</button>
+      <button id="loginTab" class="tab-btn px-6 py-2 font-semibold border-b-2 border-[#2D2B22] hover:text-[#747D86] dark:hover:text-[#b1a88f] transition">Login</button>
+      <button id="registerTab" class="tab-btn px-6 py-2 font-semibold border-b-2 border-transparent hover:border-[#747D86] dark:hover:border-[#b1a88f] hover:text-[#747D86] dark:hover:text-[#b1a88f] transition">Register</button>
     </div>
 
     <!-- Login Form -->
     <form id="loginForm" class="space-y-6 fade-in">
-      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <button type="submit" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Login</button>
+      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <button type="submit" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] dark:bg-[#b1a88f] dark:hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Login</button>
     </form>
 
     <!-- Register Form -->
     <form id="registerForm" class="space-y-6 hidden">
-      <input type="text" placeholder="Username" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <button type="submit" class="ripple w-full bg-[#B29B7B] hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Register</button>
+      <input type="text" placeholder="Username" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <button type="submit" class="ripple w-full bg-[#B29B7B] hover:bg-[#747D86] dark:bg-[#747D86] dark:hover:bg-[#b1a88f] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Register</button>
     </form>
 
-    <p class="text-center text-sm text-[#747D86] mt-10">
-      <a href="home.html" class="underline hover:text-[#2D2B22] transition">Back to Home</a>
+    <p class="text-center text-sm mt-10 text-[#747D86] dark:text-[#b1a88f]">
+      <a href="home.html" class="underline hover:text-[#2D2B22] dark:hover:text-[#f0e8dc] transition">Back to Home</a>
     </p>
   </div>
 
@@ -136,6 +152,10 @@
   <!-- Activate Feather Icons -->
   <script>
     feather.replace();
+       //Icon toggle
+    document.querySelector('button[onclick]').addEventListener('click', () => {
+      setTimeout(() => feather.replace(), 10);
+    });
   </script>
 
 </body>
