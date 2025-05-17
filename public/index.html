@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <title>TheEnd.page – Make Your Goodbye Unforgettable</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    @layer utilities {
+      .glass {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .dark .glass {
+        background: rgba(50, 50, 50, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      .float-icon {
+        animation: float 2.5s ease-in-out infinite;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] dark:from-[#1a1a1a] dark:via-[#2a2a2a] dark:to-[#1a1a1a] text-[#2D2B22] dark:text-[#f0e8dc] min-h-screen flex flex-col font-sans overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] dark:text-[#f0e8dc]">TheEnd.page</div>
+    <ul class="flex space-x-6 text-lg font-medium items-center">
+      <li>
+        <a href="/index.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
+          <i data-feather="home" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
+          <i data-feather="search" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/account.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
+          <i data-feather="user" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
+          <i data-feather="log-out" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <!-- Dark Mode Toggle -->
+        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
+          <i data-feather="moon"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="flex flex-col items-center justify-center flex-1 text-center px-6 pt-40 pb-16">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-md float-icon">
+      It's Over. Make It Count.
+    </h1>
+    <p class="text-xl md:text-2xl text-[#5B564F] dark:text-[#cfc6bc] max-w-2xl leading-relaxed mb-10 backdrop-blur-sm">
+      Quitting your job? Leaving a project? Breaking up with a person, a team, or your past self?
+      <br><br>
+      <span class="text-[#B29B7B] dark:text-[#d0ba9d] font-semibold">TheEnd.page</span> lets you create a dramatic, touching, sarcastic, or wild goodbye page that tells your side of the story — in your own style.
+    </p>
+    <a href="/create.html" class="bg-[#2D2B22] text-[#FAF1E9] dark:bg-[#FAF1E9] dark:text-[#2D2B22] px-8 py-3 rounded-xl text-lg hover:bg-[#505101] dark:hover:bg-[#d6d6d6] transition shadow-md float-icon">
+      Craft Your Exit →
+    </a>
+  </main>
+
+  <!-- Tone Preview Section -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto w-full px-6 pb-20">
+    <div class="glass rounded-xl p-6 shadow-xl hover:scale-105 transition text-[#2D2B22] dark:text-[#f0e8dc]">
+      <h3 class="text-2xl font-bold mb-2 float-icon">Dramatic</h3>
+      <p class="text-[#5B564F] dark:text-[#cfc6bc]">“This wasn’t just a goodbye. It was the final scene of a movie I never signed up for.”</p>
+    </div>
+    <div class="glass bg-opacity-30 rounded-xl p-6 text-[#2D2B22] bg-[#B29B7B] dark:bg-[#d0ba9d] shadow-xl hover:scale-105 transition">
+      <h3 class="text-2xl font-bold mb-2 float-icon">Super Cringe</h3>
+      <p>“Peace out, spreadsheet warriors. I’m taking my coffee mug and never looking back.”</p>
+    </div>
+    <div class="glass bg-opacity-30 rounded-xl p-6 text-black bg-[#747D86] dark:bg-[#aab0ba] shadow-xl hover:scale-105 transition">
+      <h3 class="text-2xl font-bold mb-2 float-icon">Classy</h3>
+      <p>“To those I’ve worked with — thank you. To those I haven’t — you missed out.”</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#E0CEB1]/70 dark:bg-[#1f1f1f]/70 backdrop-blur-sm text-center p-4 text-[#2D2B22] dark:text-[#f0e8dc] border-t border-[#B29B7B]/30 dark:border-[#444]">
+    © 2025 <span class="font-semibold">TheEnd.page</span>. Your last words, well said.
+  </footer>
+
+  <!-- Activate Feather Icons -->
+  <script>
+    feather.replace();
+    
+    //Icon toggle
+    document.querySelector('button[onclick]').addEventListener('click', () => {
+      setTimeout(() => feather.replace(), 10);
+    });
+  </script>
+</body>
+</html>
