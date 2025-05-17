@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/CSS/choice.css">
+<title>Pick Your Exit Style</title>
+
+</head>
+<body>
+
+<!-- ====== INTRO VIDEO ====== -->
+<video id="doorVideo"
+       src="/media/door1.mp4"      
+       muted
+       playsinline
+       preload="auto"
+       class="door">
+</video>
+
+<!-- ====== CARD GRID (initially hidden) ====== -->
+<div id="choiceGrid" class="grid hide">
+  <div class="card" style="--img:url('/photos/Ironic.png');"><span>Ironic</span></div>
+  <div class="card" style="--img:url('/photos/Dramatic.png');"><span>Dramatic</span></div>
+  <div class="card" style="--img:url('/photos/Super Cringe.png');"><span>Super Cringe</span></div>
+  <div class="card" style="--img:url('/photos/Classy.png');"><span>Classy</span></div>
+  <div class="card" style="--img:url('/photos/Passive Aggressive.png');"><span>Passive Aggressive</span></div>
+  <div class="card" style="--img:url('/photos/Honest.png');"><span>Honest</span></div>
+</div>
+
+<!-- ====== BACKDROP & MODAL ====== -->
+<div id="backdrop" class="backdrop hide"></div>
+
+<form id="prefModal" class="modal hide" autocomplete="off">
+  <h2 id="prefTitle">Your Preferences</h2>
+  <div id="dynamicFields"></div>
+  <div class="actions">
+    <button type="submit" class="btn primary">Save</button>
+    <button type="button" id="cancel" class="btn">Cancel</button>
+  </div>
+</form>
+
+<script src="/JS/choice.js"></script>
+</body>
+</html>
