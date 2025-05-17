@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TheEnd.page – Login / Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <style>
+    @layer utilities {
+      .glass {
+        background: rgba(250, 241, 233, 0.2);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+            .dark .glass {
+        background: rgba(50, 50, 50, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      .float-icon {
+        animation: float 2.5s ease-in-out infinite;
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .ripple:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+      /*Styling for system messages*/
+  #system-message {
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 1rem;
+  margin: 0 auto;
+  z-index: 60;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(250, 241, 233, 0.3);
+  color: #2D2B22;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Dark mode support */
+.dark #system-message {
+  background: rgba(50, 50, 50, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f0e8dc;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Optional animation class for visibility */
+#system-message.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22] dark:bg-gradient-to-br dark:from-[#121212] dark:via-[#2c2c2c] dark:to-[#3f3f3f] dark:text-[#f0e8dc] transition-colors duration-500">
+
+  <!-- Navbar -->
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] dark:text-[#f0e8dc]">TheEnd.page</div>
+    <ul class="flex space-x-6 text-lg font-medium items-center">
+      <li>
+        <a href="/index.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
+          <i data-feather="home" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
+          <i data-feather="search" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/account.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
+          <i data-feather="user" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
+          <i data-feather="log-out" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
+        <!-- Dark Mode Toggle -->
+        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
+          <i data-feather="moon"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Logout card -->
+  <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150 float-icon text-[#2D2B22] dark:text-[#f0e8dc] dark:bg-[rgba(25,25,25,0.6)] transition-colors duration-500">
+    <h2 id="formTitle" class="text-4xl font-extrabold text-center mb-10 tracking-tight animate-pulse">Logout?</h2>
+
+
+    <!-- Login Form -->
+    <form id="logoutForm" class="space-y-6 fade-in">
+      <button type="submit" id="login-link"  onclick="logoutUser(event)" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] dark:bg-[#b1a88f] dark:hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Yes</button>
+      <button type="submit" onclick="window.location.href = '/index.html'" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] dark:bg-[#b1a88f] dark:hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">No</button>
+    </form>
+
+  </div>
+
+  <!-- Activate Feather Icons -->
+  <script>
+    feather.replace();
+       //Icon toggle
+    document.querySelector('button[onclick]').addEventListener('click', () => {
+      setTimeout(() => feather.replace(), 10);
+    });
+
+    function logoutUser(){  //Function to logout a user
+      const systemMessage=document.getElementById('system-message');
+      event.preventDefault();
+     fetch('http://localhost:8000/logout', {  //DELETE request
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+        .then(message => {
+          if (message.message) {
+            systemMessage.innerText=message.message;
+            systemMessage.style.opacity='1';
+            setTimeout(closeMessage,2000);
+            window.location.href = '/index.html'  
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          systemMessage.innerText='❌ Error: ' + error;
+          systemMessage.style.opacity='1';
+          setTimeout(closeMessage,2000);
+        });
+  }
+  </script>
+
+</body>
+</html>
