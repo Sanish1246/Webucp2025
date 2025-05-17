@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compose Your Goodbye – TheEnd.page</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+
+  <style>
+    @layer utilities {
+      .glass {
+        background: rgba(10, 10, 10, 0.3);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .dark .glass {
+        background: rgba(20, 20, 20, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+
+      .float-icon {
+        animation: float 2.5s ease-in-out infinite;
+      }
+
+      textarea::placeholder {
+        color: #888;
+      }
+
+      .preview-item img, .preview-item video {
+        max-width: 100%;
+        border-radius: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Blood Drip Animation */
+      .drip {
+        position: absolute;
+        width: 6px;
+        height: 20px;
+        background: #7a0f0f;
+        border-radius: 50%;
+        top: 0;
+        animation: drip 2.5s infinite ease-in-out;
+      }
+
+      .drip:nth-child(1) { left: 20%; animation-delay: 0s; }
+      .drip:nth-child(2) { left: 40%; animation-delay: 0.8s; }
+      .drip:nth-child(3) { left: 60%; animation-delay: 1.5s; }
+      .drip:nth-child(4) { left: 80%; animation-delay: 2.2s; }
+
+      @keyframes drip {
+        0% { transform: translateY(0); opacity: 0; }
+        10% { opacity: 1; }
+        80% { transform: translateY(20px); opacity: 0.8; }
+        100% { transform: translateY(60px); opacity: 0; }
+      }
+
+      /* Preview Message Styling */
+      #previewContainer {
+        color: #e11d48; /* Vivid red */
+      }
+
+      #previewContainer strong {
+        color: #f43f5e;
+        font-weight: bold;
+      }
+
+      #previewContainer em {
+        color: #a21caf;
+        font-style: italic;
+      }
+
+      #previewContainer a {
+        color: #e11d48;
+        text-decoration: underline;
+        transition: color 0.3s;
+      }
+
+      #previewContainer a:hover {
+        color: #f43f5e;
+      }
+    }
+  </style>
+</head>
+
+<body class="relative bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-black dark:from-[#000000] dark:via-[#1a1a1a] dark:to-[#0f0f0f] text-[#f2f2f2] min-h-screen font-sans flex flex-col overflow-x-hidden">
+
+  <!-- Blood Drips -->
+  <div class="absolute top-0 left-0 w-full h-0 pointer-events-none z-50">
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
+    <div class="text-2xl font-bold tracking-wide text-[#f2f2f2] dark:text-[#f0e8dc]">TheEnd.page</div>
+    <ul class="flex space-x-6 text-lg font-medium items-center">
+      <li><a href="/index.html" class="float-icon hover:text-[#990000] dark:hover:text-[#ff1a1a]" title="Home"><i data-feather="home"></i></a></li>
+      <li><a href="/search.html" class="hover:text-[#990000] dark:hover:text-[#ff1a1a]" title="Search"><i data-feather="search"></i></a></li>
+      <li><a href="/account.html" class="hover:text-[#990000] dark:hover:text-[#ff1a1a]" title="Account"><i data-feather="user"></i></a></li>
+      <li><a href="/logout.html" class="hover:text-[#990000] dark:hover:text-[#ff1a1a]" title="Log Out"><i data-feather="log-out"></i></a></li>
+      <li>
+        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#990000] dark:hover:text-[#ff1a1a]"><i data-feather="moon"></i></button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-40 px-4 md:px-12 pb-24 flex-grow flex flex-col items-center">
+    <!-- Title -->
+    <h2 class="text-4xl font-bold text-[#7a0f0f] dark:text-[#a60b0b] tracking-wide mb-6 drop-shadow-[0_2px_4px_rgba(122,15,15,0.8)]">
+      Bleed Your Final Words
+    </h2>
+
+    <!-- Preview Container (Text now vivid) -->
+    <div id="previewContainer" class="w-full max-w-4xl bg-[#0a0a0a]/80 backdrop-blur-md p-8 rounded-2xl border border-[#7a0f0f]/50 shadow-[0_0_25px_#7a0f0f66] overflow-y-auto space-y-4 leading-relaxed text-lg">
+      <p>This is a <strong>bold message</strong>, with some <em>emotion</em> and <a href="#">a link</a>.</p>
+    </div>
+
+    <!-- Input Section -->
+    <div class="glass rounded-2xl w-full max-w-4xl p-6 shadow-xl mt-10 dark:bg-white/10 dark:border-white/10">
+      <div class="flex flex-col md:flex-row items-center gap-4">
+        <textarea id="bioInput" rows="3" placeholder="Write your message..." class="w-full resize-none p-4 text-lg rounded-xl border border-[#7a0f0f]/50 bg-[#0f0f0f] dark:bg-[#1a1a1a] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#cc0000]/50"></textarea>
+
+        <div class="flex flex-row gap-4 mt-2 md:mt-0">
+          <button type="button" id="sendMessage" class="bg-[#990000] hover:bg-[#cc0000] text-white dark:bg-[#cc0000] dark:hover:bg-[#ff1a1a] p-3 rounded-xl shadow-md float-icon" title="Send">
+            <i data-feather="send"></i>
+          </button>
+
+          <label for="mediaUpload" class="cursor-pointer bg-[#003366] hover:bg-[#004080] text-white dark:bg-[#0055aa] dark:hover:bg-[#0066cc] p-3 rounded-xl shadow-md float-icon" title="Upload Media">
+            <i data-feather="upload"></i>
+          </label>
+          <input type="file" id="mediaUpload" accept="image/*,video/*" class="hidden" />
+
+          <button type="button" id="saveMessage" class="bg-[#4B0082] hover:bg-[#5A0099] text-white dark:bg-[#6A0DAD] dark:hover:bg-[#7D1DAD] p-3 rounded-xl shadow-md float-icon" title="Save">
+            <i data-feather="save"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#111]/70 dark:bg-[#111]/70 backdrop-blur-sm text-center p-4 text-[#999] dark:text-[#bbb] border-t border-[#333] dark:border-white/10">
+    © 2025 <span class="font-semibold text-white">TheEnd.page</span>. Write it your way.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../JS/message.js"></script>
+  <script>
+    feather.replace();
+    document.querySelector('button[onclick]').addEventListener('click', () => {
+      setTimeout(() => feather.replace(), 10);
+    });
+  </script>
+</body>
+</html>
