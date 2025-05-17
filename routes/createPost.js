@@ -12,13 +12,15 @@ postRoute.use(fileUpload());
 
 postRoute.post('/api/post', async (req, res) => {
   try {
-    // if (!req.session.user) {
-    //   return res.status(401).json({ error: 'Unauthorized: No user session found' });
-    // }
+    if (!req.session.user) {
+      return res.status(401).json({ error: 'Unauthorized: No user session found' });
+    }
 
-    const username = "Sam";
+    
     const { title, likes, theme, font, music } = req.body;
     const contentArray = [];
+
+    const username = req.session.user.username;
 
     const uploadDir = path.join(__dirname, '..', 'public', 'uploads');
     if (!fs.existsSync(uploadDir)) {
@@ -91,5 +93,24 @@ postRoute.post('/api/post', async (req, res) => {
     res.status(500).json({ error: 'Server error while creating post' });
   }
 });
+
+postRoute.get('/api/post', async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.status(401).json({ error: 'Unauthorized: No user session found' });
+    }
+
+    const username = req.session.user.username;
+
+    const userPosts = await Post.find({ username }).sort({ _id: -1 }); // newest first
+
+    res.status(200).json({ posts: userPosts });
+
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    res.status(500).json({ error: 'Server error while fetching posts' });
+  }
+});
+
 
 export default postRoute;

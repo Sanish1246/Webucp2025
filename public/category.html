@@ -9,6 +9,7 @@
 
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+    <script type="module" src="JS/category.js"></script>
 
     <style>
       @layer utilities {
@@ -83,77 +84,10 @@
       >
         Preview
       </h1>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Dramatic -->
-        <a
-          href="/dramatic.html"
-          class="transform transition duration-300 hover:scale-105"
-        >
-          <div class="glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer">
-            <h2 class="text-2xl font-bold">Exit Stage Left</h2>
-            <p><span class="font-semibold">Tone:</span> Dramatic</p>
-            <p><span class="font-semibold">Font:</span> Cinzel</p>
-            <p><span class="font-semibold">Audio:</span> Sad Violin</p>
-          </div>
-        </a>
-
-        <!-- Super Cringe -->
-        <a
-          href="/cringe.html"
-          class="transform transition duration-300 hover:scale-105"
-        >
-          <div
-            class="glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer bg-[#B29B7B]/50"
-          >
-            <h2 class="text-2xl font-bold">Ultimate Cringe Logoff</h2>
-            <p><span class="font-semibold">Tone:</span> Super Cringe</p>
-            <p><span class="font-semibold">Font:</span> Comic Sans MS</p>
-            <p><span class="font-semibold">Audio:</span> Clown Horn</p>
-          </div>
-        </a>
-
-        <!-- Classy -->
-        <a
-          href="/classy.html"
-          class="transform transition duration-300 hover:scale-105"
-        >
-          <div
-            class="glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer bg-[#747D86]/50 text-black"
-          >
-            <h2 class="text-2xl font-bold">An Elegant Farewell</h2>
-            <p><span class="font-semibold">Tone:</span> Classy</p>
-            <p><span class="font-semibold">Font:</span> Georgia</p>
-            <p><span class="font-semibold">Audio:</span> Soft Piano</p>
-          </div>
-        </a>
-
-        <!-- Touching -->
-        <a
-          href="/touching.html"
-          class="transform transition duration-300 hover:scale-105"
-        >
-          <div class="glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer">
-            <h2 class="text-2xl font-bold">Heartfelt Goodbye</h2>
-            <p><span class="font-semibold">Tone:</span> Touching</p>
-            <p><span class="font-semibold">Font:</span> Dancing Script</p>
-            <p><span class="font-semibold">Audio:</span> Acoustic Guitar</p>
-          </div>
-        </a>
-
-        <!-- Passive Aggressive -->
-        <a
-          href="/passive.html"
-          class="transform transition duration-300 hover:scale-105 col-span-full"
-        >
-          <div class="glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer">
-            <h2 class="text-2xl font-bold">Bye, I Guess</h2>
-            <p><span class="font-semibold">Tone:</span> Passive Aggressive</p>
-            <p><span class="font-semibold">Font:</span> Baskerville</p>
-            <p><span class="font-semibold">Audio:</span> Sassy Strings</p>
-          </div>
-        </a>
-      </div>
+      <div
+        id="card-container"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8"
+      ></div>
     </main>
 
     <!-- Footer -->
