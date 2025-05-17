@@ -30,7 +30,6 @@ document.getElementById('mediaUpload').addEventListener('change', (event) => {
   mediaElement.style.maxHeight = '300px';
   mediaElement.style.objectFit = 'contain';
   mediaElement.style.display = 'block';
-  mediaElement.style.margin = '0 auto';
 
   document.getElementById('previewContainer').appendChild(mediaElement);
 
