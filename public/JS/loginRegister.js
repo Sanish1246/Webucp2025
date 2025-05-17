@@ -93,6 +93,7 @@ function loginUser(event){  //Function to login a user
       .then(response => response.json())
       .then(data => {
         if (data.userId) {
+          sessionStorage.setItem('userEmail', newEmail);
           window.location.href = '/create.html';
         } else {  //Validation failed
           if(data.error){

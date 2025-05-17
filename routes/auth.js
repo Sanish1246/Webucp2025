@@ -62,6 +62,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.user = {
+      email:user.email,
       username: user.username,
       password: user.password,
     };
@@ -81,7 +82,7 @@ router.post('/login', async (req, res) => {
 router.get('/login', (req, res) => {
   if (req.session.user) {
     res.status(200).json({
-      username: req.session.user.username,
+      email: req.session.user.email,
     });
   } else {
     res.status(200).json({error: "Error"});

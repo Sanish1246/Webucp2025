@@ -117,3 +117,19 @@ modal.addEventListener('submit', e => {
 
 // Optional: toggle dark mode for the document
 document.documentElement.classList.toggle('dark');
+
+async function openLogin(event){
+  event.preventDefault();
+    try {
+const response = await fetch('/login');
+const data = await response.json();
+if (data.email) {
+  window.location.href = '/user-page.html';
+} else {
+  window.location.href = '/account.html';
+}
+console.log(data);
+} catch (error) {
+console.error('Error:', error);
+}
+}
