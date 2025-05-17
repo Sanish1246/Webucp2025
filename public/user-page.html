@@ -47,7 +47,7 @@
       <div class="text-2xl tracking-wide dynamic-font">TheEnd.page</div>
       <ul class="flex space-x-6 text-lg items-center">
         <li>
-          <a href="/public/home.html" title="Home"
+          <a href="/index.html" title="Home"
             ><i
               data-feather="home"
               class="hover:text-[#747D86] dynamic-icon"
@@ -63,7 +63,7 @@
           ></a>
         </li>
         <li>
-          <a href="/public/account.html" title="Account"
+          <a href="/user-page.html" title="Account"
             ><i
               data-feather="user"
               class="hover:text-[#747D86] dynamic-icon"
@@ -202,6 +202,21 @@
 
     <script>
       feather.replace();
+      async function openLogin(event){
+          event.preventDefault();
+            try {
+        const response = await fetch('/login');
+        const data = await response.json();
+        if (data.email) {
+          window.location.href = '/user-page.html';
+        } else {
+          window.location.href = '/account.html';
+        }
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
     </script>
   </body>
 </html>
