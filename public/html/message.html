@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/MessageStyles.css"> <!--Link to CSS stylesheet-->
+    <title>Write your message</title>
+</head> 
+<body>
+    <!--Container for the live preview of the message page--> 
+    <div class="display-message" id="display-message">
+    </div>
+
+    <!--Section for the inputs of the message-->
+    <div class="create-message">
+        <label for="message">Message</label>
+        <textarea id="upload-message" name="content" rows="1" maxlength="1000" class="message-content"></textarea>
+        <button id="submit-button" onclick="addMessage()">➤</button>
+        <input type="file" id="file-input" accept="image/*,video/*">
+        <button id="upload-button" onclick="addMedia()">📤</button>
+    </div>
+
+    <script src="../JS/message.js"></script>
+</body>
+</html>
+
+
+
