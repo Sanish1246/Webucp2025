@@ -51,6 +51,22 @@
       transform: scale(1.02);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+
+        /*Styling for system messages*/
+    #system-message{
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        margin:0 auto;
+        background: linear-gradient(90deg, hsl(290, 96%, 40%, 1), hsl(0, 96%, 60%, 1));
+        padding: 20px 20px 20px 20xpx;
+        z-index: 60;
+        top:0;
+        opacity:0;
+        border-radius: 2px;
+        border: 1px solid black;
+        font-size: 1.5rem;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22] dark:bg-gradient-to-br dark:from-[#121212] dark:via-[#2c2c2c] dark:to-[#3f3f3f] dark:text-[#f0e8dc] transition-colors duration-500">
@@ -100,17 +116,17 @@
 
     <!-- Login Form -->
     <form id="loginForm" class="space-y-6 fade-in">
-      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <button type="submit" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] dark:bg-[#b1a88f] dark:hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Login</button>
+      <input type="email" placeholder="Email" id="email" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="password" placeholder="Password" id="password" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <button type="submit" id="login-link"  onclick="loginUser(event)" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] dark:bg-[#b1a88f] dark:hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Login</button>
     </form>
 
     <!-- Register Form -->
     <form id="registerForm" class="space-y-6 hidden">
-      <input type="text" placeholder="Username" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
-      <button type="submit" class="ripple w-full bg-[#B29B7B] hover:bg-[#747D86] dark:bg-[#747D86] dark:hover:bg-[#b1a88f] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Register</button>
+      <input type="text" placeholder="Username" id="new-username"class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="email" placeholder="Email" id="new-email" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="password" placeholder="Password" id="new-password" class="w-full p-4 rounded-xl bg-white/30 dark:bg-[#222] text-[#2D2B22] dark:text-[#f0e8dc] placeholder-[#747D86] dark:placeholder-[#b1a88f] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <button type="submit" id="register-link" onclick="registerUser(event)" class="ripple w-full bg-[#B29B7B] hover:bg-[#747D86] dark:bg-[#747D86] dark:hover:bg-[#b1a88f] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Register</button>
     </form>
 
     <p class="text-center text-sm mt-10 text-[#747D86] dark:text-[#b1a88f]">
@@ -118,36 +134,10 @@
     </p>
   </div>
 
-  <!-- Tab Toggle Script -->
-  <script>
-    const loginTab = document.getElementById("loginTab");
-    const registerTab = document.getElementById("registerTab");
-    const loginForm = document.getElementById("loginForm");
-    const registerForm = document.getElementById("registerForm");
-    const formTitle = document.getElementById("formTitle"); 
-
-    loginTab.addEventListener("click", () => {
-      loginForm.classList.remove("hidden");
-      loginForm.classList.add("fade-in");
-      registerForm.classList.add("hidden");
-      loginTab.classList.add("border-[#2D2B22]");
-      loginTab.classList.remove("border-transparent");
-      registerTab.classList.remove("border-[#2D2B22]");
-      registerTab.classList.add("border-transparent");
-      formTitle.textContent = "Welcome Back"; 
-    });
-
-    registerTab.addEventListener("click", () => {
-      registerForm.classList.remove("hidden");
-      registerForm.classList.add("fade-in");
-      loginForm.classList.add("hidden");
-      registerTab.classList.add("border-[#2D2B22]");
-      registerTab.classList.remove("border-transparent");
-      loginTab.classList.remove("border-[#2D2B22]");
-      loginTab.classList.add("border-transparent");
-      formTitle.textContent = "Heyy Friend"; 
-    });
-  </script>
+      <!--Container for system messages sent from the backend-->
+    <div id="system-message">
+        <p>Account created successfully</p>
+    </div>
 
   <!-- Activate Feather Icons -->
   <script>
@@ -157,6 +147,8 @@
       setTimeout(() => feather.replace(), 10);
     });
   </script>
+   <!-- Tab Toggle Script -->
+  <script src="/JS/loginRegister.js"></script>
 
 </body>
 </html>

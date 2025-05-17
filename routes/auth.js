@@ -15,9 +15,15 @@ router.post('/register', async (req, res) => {
       return res.status(401).json({ error: "Username already in use!" });
     }
 
+    const emailExists=await User.findOne({ email: userData.email });
+    if (emailExists) {
+      return res.status(401).json({ error: "Email already in use!" });
+    }
+
     const newUser = await User.create(userData); 
 
     req.session.user = {
+      email: newUser.email,
       username: newUser.username,
       password: newUser.password,
     };
@@ -36,13 +42,13 @@ router.post('/register', async (req, res) => {
 
 // POST Request to login
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ error: "Invalid username" });
+      return res.status(401).json({ error: "Invalid email" });
     }
 
     if (user.password !== password) {
@@ -64,6 +70,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 //GET request to check login status
 router.get('/login', (req, res) => {
   if (req.session.user) {
