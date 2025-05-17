@@ -14,7 +14,7 @@
         border: 1px solid rgba(255, 255, 255, 0.25);
       }
 
-        @keyframes float {
+      @keyframes float {
         0%, 100% {
           transform: translateY(0);
         }
@@ -26,7 +26,6 @@
       .float-icon {
         animation: float 2.5s ease-in-out infinite;
       }
-
     }
 
     .fade-in {
@@ -42,7 +41,6 @@
       transform: scale(1.02);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
-    
   </style>
 </head>
 <body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22]">
@@ -76,7 +74,7 @@
 
   <!-- Login/Register Card -->
   <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150 float-icon">
-    <h2 class="text-4xl font-extrabold text-center mb-10 text-[#2D2B22] tracking-tight animate-pulse">Welcome Back</h2>
+    <h2 id="formTitle" class="text-4xl font-extrabold text-center mb-10 text-[#2D2B22] tracking-tight animate-pulse">Welcome Back</h2>
 
     <!-- Tab Buttons -->
     <div class="flex justify-center gap-6 mb-10">
@@ -110,6 +108,7 @@
     const registerTab = document.getElementById("registerTab");
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
+    const formTitle = document.getElementById("formTitle"); 
 
     loginTab.addEventListener("click", () => {
       loginForm.classList.remove("hidden");
@@ -119,6 +118,7 @@
       loginTab.classList.remove("border-transparent");
       registerTab.classList.remove("border-[#2D2B22]");
       registerTab.classList.add("border-transparent");
+      formTitle.textContent = "Welcome Back"; 
     });
 
     registerTab.addEventListener("click", () => {
@@ -129,6 +129,7 @@
       registerTab.classList.remove("border-transparent");
       loginTab.classList.remove("border-[#2D2B22]");
       loginTab.classList.add("border-transparent");
+      formTitle.textContent = "Heyy Friend"; 
     });
   </script>
 
