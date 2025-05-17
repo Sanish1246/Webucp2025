@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exit Stage Left – TheEnd.page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      .fade-in {
+        animation: fadeIn 1.2s ease-in forwards;
+      }
+
+      .slide-up {
+        animation: slideUp 1s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="min-h-screen bg-[#ECE2D0] text-[#2D2B22] flex flex-col fade-in"
+    style="font-family: Arial, Helvetica, sans-serif"
+  >
+    <!-- Navbar -->
+    <nav
+      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 backdrop-blur-md bg-white/50 slide-up"
+    >
+      <div class="text-2xl tracking-wide">TheEnd.page</div>
+      <ul class="flex space-x-6 text-lg items-center">
+        <li>
+          <a href="/public/home.html" title="Home"
+            ><i data-feather="home" class="hover:text-[#747D86]"></i
+          ></a>
+        </li>
+        <li>
+          <a href="/search.html" title="Search"
+            ><i data-feather="search" class="hover:text-[#747D86]"></i
+          ></a>
+        </li>
+        <li>
+          <a href="/public/account.html" title="Account"
+            ><i data-feather="user" class="hover:text-[#747D86]"></i
+          ></a>
+        </li>
+        <li>
+          <a href="/logout.html" title="Log Out"
+            ><i data-feather="log-out" class="hover:text-[#747D86]"></i
+          ></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main
+      class="pt-36 px-4 pb-8 max-w-3xl mx-auto w-full space-y-6 slide-up flex-grow"
+    >
+      <!-- Theme Metadata -->
+      <section
+        class="bg-[#FAF1E9] p-4 rounded-xl shadow-md text-sm grid grid-cols-2 sm:grid-cols-4 gap-4"
+      >
+        <div>
+          <p class="font-semibold text-[#4E4B42]">Font</p>
+          <p class="text-[#2D2B22]">Arial</p>
+        </div>
+        <div>
+          <p class="font-semibold text-[#4E4B42]">Color Tone</p>
+          <div
+            class="mt-1 w-6 h-6 rounded-full border border-[#B29B7B] shadow-inner bg-[#ECE2D0]"
+          ></div>
+        </div>
+        <div>
+          <p class="font-semibold text-[#4E4B42]">Audio</p>
+          <p>Sad Violin 🎻</p>
+        </div>
+        <div>
+          <p class="font-semibold text-[#4E4B42]">Theme</p>
+          <p>Dramatic</p>
+        </div>
+      </section>
+
+      <!-- Goodbye Card -->
+      <section class="bg-white/90 p-6 rounded-xl shadow-xl slide-up">
+        <div class="max-h-[350px] overflow-y-auto pr-2 space-y-4 fade-in">
+          <!-- Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <img
+                src="uploads/default_profile.png"
+                alt="User Avatar"
+                class="w-10 h-10 rounded-full shadow object-cover"
+              />
+              <div>
+                <p class="text-base">User123</p>
+                <p class="text-sm text-gray-600 italic font-bold">Final Bow</p>
+              </div>
+            </div>
+            <span
+              class="text-sm px-2 py-1 bg-[#FAF1E9] rounded-full border border-[#B29B7B]"
+            >
+              Dramatic
+            </span>
+          </div>
+
+          <!-- Interleaved Content Blocks -->
+          <div class="space-y-4 mt-4">
+            <!-- Message -->
+            <div>
+              <p class="text-lg leading-relaxed text-[#2D2B22] italic">
+                This is my final bow. The curtain falls not with regret, but
+                with gratitude. 💔🎭
+              </p>
+            </div>
+
+            <!-- Media -->
+            <div>
+              <div class="rounded-lg overflow-hidden">
+                <img
+                  src="uploads/default_profile.png"
+                  alt="Scene"
+                  class="max-w-xs max-h-64 w-auto h-auto object-contain"
+                />
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <p class="text-lg leading-relaxed text-[#2D2B22] italic">
+                Every ending is just a new beginning, wrapped in a whisper of
+                silence.
+              </p>
+            </div>
+
+            <!-- Media -->
+            <div>
+              <div class="rounded-lg overflow-hidden">
+                <img
+                  src="uploads/default_profile.png"
+                  alt="Scene"
+                  class="max-w-xs max-h-64 w-auto h-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Hidden Audio Autoplay -->
+    <audio autoplay hidden>
+      <source src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Footer -->
+    <footer
+      class="not-italic font-normal bg-[#E0CEB1]/70 text-center p-4 text-[#2D2B22] border-t border-[#B29B7B]/30 slide-up"
+    >
+      © 2025 <span class="font-semibold">TheEnd.page</span>. Write it your way.
+    </footer>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
