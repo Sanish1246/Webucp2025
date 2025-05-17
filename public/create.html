@@ -21,7 +21,7 @@
   <!-- Navbar -->
    <!-- Navbar -->
   <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
-    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] ">TheEnd.page</div>
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] " id="title">TheEnd.page</div>
     <ul class="flex space-x-6 text-lg font-medium items-center">
       <li>
         <a href="/index.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
@@ -40,7 +40,7 @@
       </li>
       <li>
         <!-- Dark Mode Toggle -->
-        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
+        <button onclick="document.documentElement.classList.toggle('dark')" id="themeToggle" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
           <i data-feather="moon"></i>
         </button>
       </li>
@@ -72,5 +72,41 @@
     feather.replace();
   </script>
 <script src="/JS/choice.js"></script>
+<script>
+const DARK_CSS = `
+  /* ---- global dark palette ---- */
+  body{ background:#131313; color:#e6e6e6; }
+
+  /* ---- card tweaks ---- */
+  .card{
+    background:
+      linear-gradient(#0005,#0005),
+      var(--img,none) center/100% 100% no-repeat,
+      rgba(255,255,255,.08);
+  }
+
+  /* ---- make all “title” headings pure white ---- */
+  #title{ color:#ffffff; }
+  /* …or, if your titles are just h1/h2 elements:
+     h1,h2{ color:#ffffff; }                         */
+
+  /* add more dark rules here… */
+`;
+
+
+let darkOn = false;
+let darkTag;
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  if (!darkOn) {
+    darkTag = document.createElement('style');
+    darkTag.textContent = DARK_CSS;
+    document.head.appendChild(darkTag);
+  } else {
+    darkTag.remove();
+  }
+  darkOn = !darkOn;
+});
+</script>
 </body>
 </html>

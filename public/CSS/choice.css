@@ -6,8 +6,8 @@
   --card-h:220px;
   --radius:16px;
   --overlay-blur:18px;
+  
 }
-
 /* ====== PAGE BACKGROUND ====== */
 body{
   font-family:system-ui, sans-serif;
@@ -15,6 +15,8 @@ body{
               #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
               #747d86 70%, #505101 100%);
 }
+
+
 
 /* ====== FULL-SCREEN INTRO VIDEO ====== */
 .door{
@@ -153,9 +155,4 @@ select:focus{outline:2px solid #fff87d}
 @media(max-width:450px){
   .modal{padding:1.8rem 1.3rem}
   .actions{flex-direction:column}
-}
-html.dark body{
-  /* solid charcoal … or swap for a dark gradient if you prefer */
-  background:#131313;          /* #000 is pitch black; #131313 is easier on eyes */
-  color:#e6e6e6;               /* default text colour on dark bg */
 }

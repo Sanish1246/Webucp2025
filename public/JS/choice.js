@@ -25,14 +25,14 @@ function finishIntro(){
 const OPTIONS = {
   'Ironic': { fonts:['Comic Sans MS','Papyrus','Jokerman'],
               music:['Chiptune 8-bit','Meme Mashup','Vaporwave'] },
-  'Dramatic': { fonts:['Playfair Display','Times New Roman','Georgia'],
-                music:['Film Score','Power Ballad','Symphonic Metal'] },
-  'Super Cringe': { fonts:['Impact','Curlz MT','Chiller'],
-                    music:['Nightcore','Bubblegum Pop','Eurobeat'] },
-  'Classy': { fonts:['Helvetica Neue','Garamond','Baskerville'],
-              music:['Smooth Jazz','Classical','Bossa Nova'] },
-  'Passive Aggressive': { fonts:['Courier New','Lucida Console','Consolas'],
-                          music:['Grunge','Punk Rock','Industrial'] },
+  'Dramatic': { fonts:['Playfair Display','Cinzel'],
+                music:['Sad Violin','Thunder Roll'] },
+  'Super Cringe': { fonts:['Comic Sans MS','Indie Flower'],
+                    music:['Clown Horn','Boing Sound'] },
+  'Classy': { fonts:['Georgia','Merriweather'],
+              music:['Soft Piano','Harp Exit'] },
+  'Passive Aggressive': { fonts:['Baskerville','Courier New'],
+                          music:['Sassy Strings','Drip Sound'] },
   'Honest': { fonts:['Arial','Verdana','Open Sans'],
               music:['Acoustic Folk','Indie Rock','Lo-fi Chill'] }
 };
