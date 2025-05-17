@@ -10,6 +10,11 @@
 
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
+   <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
 
   <style>
     @layer utilities {
@@ -18,6 +23,11 @@
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .dark .glass {
+        background: rgba(50, 50, 50, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       @keyframes float {
@@ -45,60 +55,66 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] text-[#2D2B22] min-h-screen font-sans flex flex-col overflow-x-hidden">
+<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] dark:from-[#1b1b1b] dark:via-[#2a2a2a] dark:to-[#1e1e1e] text-[#2D2B22] dark:text-[#f5f5f5] min-h-screen font-sans flex flex-col overflow-x-hidden">
 
   <!-- Navbar -->
-  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2">
-    <div class="text-2xl font-bold tracking-wide text-[#2D2B22]">TheEnd.page</div>
-    <ul class="flex space-x-6 text-lg font-medium items-center" >
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] dark:text-[#f0e8dc]">TheEnd.page</div>
+    <ul class="flex space-x-6 text-lg font-medium items-center">
       <li>
-        <a href="/public/index.html" class="float-icon hover:text-[#747D86] transition" title="Home">
+        <a href="/index.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
           <i data-feather="home" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/search.html" class="hover:text-[#747D86] transition" title="Search">
+        <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
           <i data-feather="search" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/public/account.html" class="hover:text-[#747D86] transition" title="Account">
+        <a href="/account.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
           <i data-feather="user" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/logout.html" class="hover:text-[#747D86] transition" title="Log Out">
+        <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
           <i data-feather="log-out" class="float-icon"></i>
         </a>
+      </li>
+      <li>
+        <!-- Dark Mode Toggle -->
+        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
+          <i data-feather="moon"></i>
+        </button>
       </li>
     </ul>
   </nav>
 
   <main class="pt-40 px-4 md:px-12 pb-24 flex-grow flex flex-col items-center">
     <!-- Title -->
-    <h2 class="text-3xl font-semibold text-[#3E3B2D] mb-6">Your Goodbye Preview</h2>
+    <h2 class="text-3xl font-semibold text-[#3E3B2D] dark:text-[#f5f5f5] mb-6">Your Goodbye Preview</h2>
 
-    <!-- Seamless Preview Area -->
+    <!-- Preview Container: Intatto -->
     <div id="previewContainer" class="w-full max-w-4xl bg-[#DCCBB2]/30 backdrop-blur-md p-8 rounded-2xl border border-[#B29B7B]/20 shadow-inner overflow-y-auto space-y-2 text-[#2D2B22] leading-relaxed text-lg">
       <!-- Messages will appear here as flowing text -->
     </div>
 
     <!-- Interaction Bar -->
-    <div class="glass rounded-2xl w-full max-w-4xl p-6 shadow-xl mt-10">
+    <div class="glass rounded-2xl w-full max-w-4xl p-6 shadow-xl mt-10 dark:bg-white/10 dark:border-white/10">
       <div class="flex flex-col md:flex-row items-center gap-4">
-        <textarea id="bioInput" rows="3" placeholder="Write your message..." class="w-full resize-none p-4 text-lg rounded-xl border border-[#B29B7B]/30 bg-[#FAF1E9] text-[#2D2B22] focus:outline-none focus:ring-2 focus:ring-[#B29B7B]/50"></textarea>
+        <textarea id="bioInput" rows="3" placeholder="Write your message..." class="w-full resize-none p-4 text-lg rounded-xl border border-[#B29B7B]/30 bg-[#FAF1E9] dark:bg-[#2b2b2b] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#B29B7B]/50"></textarea>
 
         <div class="flex flex-row gap-4 mt-2 md:mt-0">
-          <button type="button" id="sendMessage" class="bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] p-3 rounded-xl shadow-md float-icon" title="Send">
+          <button type="button" id="sendMessage" class="bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] dark:bg-[#f5f5f5] dark:text-[#2D2B22] dark:hover:bg-[#d6d6d6] p-3 rounded-xl shadow-md float-icon" title="Send">
             <i data-feather="send"></i>
           </button>
 
-          <label for="mediaUpload" class="cursor-pointer bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] p-3 rounded-xl shadow-md float-icon" title="Upload Media">
+          <label for="mediaUpload" class="cursor-pointer bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] dark:bg-[#f5f5f5] dark:text-[#2D2B22] dark:hover:bg-[#d6d6d6] p-3 rounded-xl shadow-md float-icon" title="Upload Media">
             <i data-feather="upload"></i>
           </label>
           <input type="file" id="mediaUpload" accept="image/*,video/*" class="hidden" />
 
-          <button type="button" id="saveMessage" class="bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] p-3 rounded-xl shadow-md float-icon" title="Save">
+          <button type="button" id="saveMessage" class="bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] dark:bg-[#f5f5f5] dark:text-[#2D2B22] dark:hover:bg-[#d6d6d6] p-3 rounded-xl shadow-md float-icon" title="Save">
             <i data-feather="save"></i>
           </button>
         </div>
@@ -107,11 +123,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-[#E0CEB1]/70 backdrop-blur-sm text-center p-4 text-[#2D2B22] border-t border-[#B29B7B]/30">
+  <footer class="bg-[#E0CEB1]/70 dark:bg-[#1e1e1e]/70 backdrop-blur-sm text-center p-4 text-[#2D2B22] dark:text-[#f5f5f5] border-t border-[#B29B7B]/30 dark:border-white/10">
     © 2025 <span class="font-semibold">TheEnd.page</span>. Write it your way.
   </footer>
 
-  <script src="../public/JS/message.js"></script>
-  <script>feather.replace();</script>
+
+  <script src="../JS/message.js"></script>
+  <script>
+  feather.replace();
+        //Icon toggle
+    document.querySelector('button[onclick]').addEventListener('click', () => {
+      setTimeout(() => feather.replace(), 10);
+    });
+  </script>
 </body>
 </html>
