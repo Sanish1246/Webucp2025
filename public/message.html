@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/MessageStyles.css" />
+    <title>Goodbye Message</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Preview container fills most of the screen -->
+      <div id="previewContainer"></div>
+
+      <!-- Bottom interaction bar -->
+      <div class="interaction-bar">
+        <textarea id="bioInput" placeholder="Write your message..."></textarea>
+
+        <button type="button" id="sendMessage" class="icon-button">➤</button>
+
+        <label for="mediaUpload" class="upload-label">📤</label>
+        <input type="file" id="mediaUpload" accept="image/*,video/*" />
+
+        <button type="button" id="saveMessage" class="icon-button">💾</button>
+      </div>
+    </div>
+
+    <script src="JS/message.js"></script>
+  </body>
+</html>

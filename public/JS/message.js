@@ -1,29 +1,33 @@
-function addMessage(){
-    const messageContainer = document.getElementById("display-message");
-    const messageElement = document.createElement('p');
-    messageElement.innerHTML=document.getElementById('upload-message').value;
-    messageContainer.appendChild(messageElement);
-    document.getElementById('upload-message').value="";
-}
+document.getElementById('sendMessage').addEventListener('click', () => {
+  const text = document.getElementById('bioInput').value.trim();
+  if (text !== '') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'preview-item';
+    messageDiv.textContent = text;
+    document.getElementById('previewContainer').appendChild(messageDiv);
+    document.getElementById('bioInput').value = '';
+  }
+});
 
-function addMedia() {
-    const fileInput = document.getElementById("file-input");
-    const messageContainer = document.getElementById("display-message");
+document.getElementById('mediaUpload').addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
 
-    const file = fileInput.files[0];
-    if (!file) return;
+  const previewItem = document.createElement('div');
+  previewItem.className = 'preview-item';
 
-    const mediaElement = document.createElement(file.type.startsWith("image/") ? "img" : "video");
+  const mediaType = file.type.startsWith('image/') ? 'img' :
+                    file.type.startsWith('video/') ? 'video' : null;
+  if (!mediaType) return;
 
-    mediaElement.src = URL.createObjectURL(file);
-    mediaElement.style.maxWidth = "400px";
-    mediaElement.style.maxHeight = "1000px";
-    mediaElement.style.margin = "0.5rem 0";
+  const mediaElement = document.createElement(mediaType);
+  mediaElement.src = URL.createObjectURL(file);
+  if (mediaType === 'video') {
+    mediaElement.controls = true;
+  }
 
-    if (file.type.startsWith("video/")) {
-        mediaElement.controls = true;
-    }
+  previewItem.appendChild(mediaElement);
+  document.getElementById('previewContainer').appendChild(previewItem);
 
-    messageContainer.appendChild(mediaElement);
-    fileInput.value = "";
-}
+  event.target.value = ''; // Reset file input
+});

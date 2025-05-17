@@ -1,56 +1,104 @@
-body{
-    animation: fadeIn 1s ease;
-    background: linear-gradient(to bottom right, #f6f0e4, #e4d9c3);
-    color: #333;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.create-message{
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    bottom: 0;
-    left:10%;
-    width:80%;
-    padding-bottom:10px;
-    gap: 0.2rem;
-    z-index: 10; 
-    animation: slideUp 0.6s ease-out;
-}
-#upload-message{
-    width:100%;
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #f6f0e4, #e4d9c3);
+  color: #3e2f1c;
+  overflow: hidden;
 }
 
-#display-message {
+.main-container {
   display: flex;
   flex-direction: column;
-  max-height: 93vh;
+  height: 100vh;
+}
+
+#previewContainer {
+  flex: 1;
   overflow-y: auto;
-  box-sizing: border-box;
-  border: 1px solid black;
+  padding: 1rem;
+  background-color: hsl(34, 78%, 90%);
+  border-bottom: 1px solid hsl(39, 31%, 75%);
 }
 
-button,
-input {
-  padding: 0.7rem;
+.preview-item {
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  max-width: 80%;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.preview-item img,
+.preview-item video {
+  max-width: 100%;
+  max-height: 250px;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 0.4rem;
+  object-fit: contain;
+  display: block;
+}
+
+.interaction-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #ece2d0;
+  border-top: 1px solid #d2c4aa;
+  gap: 0.5rem;
+}
+
+textarea {
+  flex: 1;
+  padding: 0.5rem;
   font-size: 1rem;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-button:hover,
-input:hover {
-  background-color: #444;
-  transform: translateY(-2px);
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  border-radius: 8px;
+  border: 1px solid #cbb89d;
+  resize: none;
+  height: 50px;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+textarea:focus {
+  border-color: #8c5a3c;
+  outline: none;
+}
+
+button.icon-button {
+  background-color: #5b4031;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button.icon-button:hover {
+  background-color: #755541;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-label {
+  background-color: #5b4031;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.upload-label:hover {
+  background-color: #755541;
 }
