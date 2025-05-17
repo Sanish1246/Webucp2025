@@ -154,3 +154,8 @@ select:focus{outline:2px solid #fff87d}
   .modal{padding:1.8rem 1.3rem}
   .actions{flex-direction:column}
 }
+html.dark body{
+  /* solid charcoal … or swap for a dark gradient if you prefer */
+  background:#131313;          /* #000 is pitch black; #131313 is easier on eyes */
+  color:#e6e6e6;               /* default text colour on dark bg */
+}

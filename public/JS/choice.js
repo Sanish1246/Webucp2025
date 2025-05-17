@@ -101,3 +101,4 @@ modal.addEventListener('submit', e=>{
   console.log('Saved data →',data);
   toggleModal(false);
 });
+document.documentElement.classList.toggle('dark');
