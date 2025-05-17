@@ -37,33 +37,45 @@
   </head>
 
   <body
-    class="min-h-screen bg-[#ECE2D0] text-[#2D2B22] flex flex-col fade-in"
+    class="min-h-screen bg-[#ECE2D0] text-[#2D2B22] flex flex-col fade-in dynamic-bg dynamic-font-color"
     style="font-family: Arial, Helvetica, sans-serif"
   >
     <!-- Navbar -->
     <nav
-      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 backdrop-blur-md bg-white/50 slide-up"
+      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 backdrop-blur-md bg-white/50 slide-up dynamic-navbar"
     >
-      <div class="text-2xl tracking-wide">TheEnd.page</div>
+      <div class="text-2xl tracking-wide dynamic-font">TheEnd.page</div>
       <ul class="flex space-x-6 text-lg items-center">
         <li>
           <a href="/public/home.html" title="Home"
-            ><i data-feather="home" class="hover:text-[#747D86]"></i
+            ><i
+              data-feather="home"
+              class="hover:text-[#747D86] dynamic-icon"
+            ></i
           ></a>
         </li>
         <li>
           <a href="/search.html" title="Search"
-            ><i data-feather="search" class="hover:text-[#747D86]"></i
+            ><i
+              data-feather="search"
+              class="hover:text-[#747D86] dynamic-icon"
+            ></i
           ></a>
         </li>
         <li>
           <a href="/public/account.html" title="Account"
-            ><i data-feather="user" class="hover:text-[#747D86]"></i
+            ><i
+              data-feather="user"
+              class="hover:text-[#747D86] dynamic-icon"
+            ></i
           ></a>
         </li>
         <li>
           <a href="/logout.html" title="Log Out"
-            ><i data-feather="log-out" class="hover:text-[#747D86]"></i
+            ><i
+              data-feather="log-out"
+              class="hover:text-[#747D86] dynamic-icon"
+            ></i
           ></a>
         </li>
       </ul>
@@ -75,30 +87,32 @@
     >
       <!-- Theme Metadata -->
       <section
-        class="bg-[#FAF1E9] p-4 rounded-xl shadow-md text-sm grid grid-cols-2 sm:grid-cols-4 gap-4"
+        class="bg-[#FAF1E9] p-4 rounded-xl shadow-md text-sm grid grid-cols-2 sm:grid-cols-4 gap-4 dynamic-card"
       >
         <div>
-          <p class="font-semibold text-[#4E4B42]">Font</p>
-          <p class="text-[#2D2B22]">Arial</p>
+          <p class="font-semibold text-[#4E4B42] dynamic-label">Font</p>
+          <p class="text-[#2D2B22] dynamic-font">Arial</p>
         </div>
         <div>
-          <p class="font-semibold text-[#4E4B42]">Color Tone</p>
+          <p class="font-semibold text-[#4E4B42] dynamic-label">Color Tone</p>
           <div
-            class="mt-1 w-6 h-6 rounded-full border border-[#B29B7B] shadow-inner bg-[#ECE2D0]"
+            class="mt-1 w-6 h-6 rounded-full border border-[#B29B7B] shadow-inner bg-[#ECE2D0] dynamic-color"
           ></div>
         </div>
         <div>
-          <p class="font-semibold text-[#4E4B42]">Audio</p>
-          <p>Sad Violin 🎻</p>
+          <p class="font-semibold text-[#4E4B42] dynamic-label">Audio</p>
+          <p class="dynamic-font">Sad Violin 🎻</p>
         </div>
         <div>
-          <p class="font-semibold text-[#4E4B42]">Theme</p>
-          <p>Dramatic</p>
+          <p class="font-semibold text-[#4E4B42] dynamic-label">Theme</p>
+          <p class="dynamic-font">Dramatic</p>
         </div>
       </section>
 
       <!-- Goodbye Card -->
-      <section class="bg-white/90 p-6 rounded-xl shadow-xl slide-up">
+      <section
+        class="bg-white/90 p-6 rounded-xl shadow-xl slide-up dynamic-card"
+      >
         <div class="max-h-[350px] overflow-y-auto pr-2 space-y-4 fade-in">
           <!-- Header -->
           <div class="flex items-center justify-between">
@@ -106,15 +120,19 @@
               <img
                 src="uploads/default_profile.png"
                 alt="User Avatar"
-                class="w-10 h-10 rounded-full shadow object-cover"
+                class="w-10 h-10 rounded-full shadow object-cover dynamic-avatar"
               />
               <div>
-                <p class="text-base">User123</p>
-                <p class="text-sm text-gray-600 italic font-bold">Final Bow</p>
+                <p class="text-base dynamic-font">User123</p>
+                <p
+                  class="text-sm text-gray-600 italic font-bold dynamic-subtext"
+                >
+                  Final Bow
+                </p>
               </div>
             </div>
             <span
-              class="text-sm px-2 py-1 bg-[#FAF1E9] rounded-full border border-[#B29B7B]"
+              class="text-sm px-2 py-1 bg-[#FAF1E9] rounded-full border border-[#B29B7B] dynamic-badge"
             >
               Dramatic
             </span>
@@ -124,7 +142,9 @@
           <div class="space-y-4 mt-4">
             <!-- Message -->
             <div>
-              <p class="text-lg leading-relaxed text-[#2D2B22] italic">
+              <p
+                class="text-lg leading-relaxed text-[#2D2B22] italic dynamic-font"
+              >
                 This is my final bow. The curtain falls not with regret, but
                 with gratitude. 💔🎭
               </p>
@@ -136,14 +156,16 @@
                 <img
                   src="uploads/default_profile.png"
                   alt="Scene"
-                  class="max-w-xs max-h-64 w-auto h-auto object-contain"
+                  class="max-w-xs max-h-64 w-auto h-auto object-contain dynamic-media"
                 />
               </div>
             </div>
 
             <!-- Message -->
             <div>
-              <p class="text-lg leading-relaxed text-[#2D2B22] italic">
+              <p
+                class="text-lg leading-relaxed text-[#2D2B22] italic dynamic-font"
+              >
                 Every ending is just a new beginning, wrapped in a whisper of
                 silence.
               </p>
@@ -155,7 +177,7 @@
                 <img
                   src="uploads/default_profile.png"
                   alt="Scene"
-                  class="max-w-xs max-h-64 w-auto h-auto object-contain"
+                  class="max-w-xs max-h-64 w-auto h-auto object-contain dynamic-media"
                 />
               </div>
             </div>
@@ -165,16 +187,17 @@
     </main>
 
     <!-- Hidden Audio Autoplay -->
-    <audio autoplay hidden>
+    <audio autoplay hidden class="dynamic-audio">
       <source src="" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
 
     <!-- Footer -->
     <footer
-      class="not-italic font-normal bg-[#E0CEB1]/70 text-center p-4 text-[#2D2B22] border-t border-[#B29B7B]/30 slide-up"
+      class="not-italic font-normal bg-[#E0CEB1]/70 text-center p-4 text-[#2D2B22] border-t border-[#B29B7B]/30 slide-up dynamic-footer"
     >
-      © 2025 <span class="font-semibold">TheEnd.page</span>. Write it your way.
+      © 2025 <span class="font-semibold dynamic-font">TheEnd.page</span>. Write
+      it your way.
     </footer>
 
     <script>

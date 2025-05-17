@@ -1,94 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/CSS/choice.css">
-<title>Pick Your Exit Style</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/choice.css" />
+    <title>Pick Your Exit Style</title>
+  </head>
+  <body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- ====== INTRO VIDEO ====== -->
+    <video
+      id="doorVideo"
+      src="/media/door1.mp4"
+      muted
+      playsinline
+      preload="auto"
+      class="door"
+    ></video>
+    <!-- Navbar -->
+    <nav
+      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]"
+    >
+      <div class="text-2xl font-bold tracking-wide text-[#2D2B22]" id="title">
+        TheEnd.page
+      </div>
+      <ul class="flex space-x-6 text-lg font-medium items-center">
+        <li>
+          <a
+            href="/index.html"
+            class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+            title="Home"
+          >
+            <i data-feather="home" class="float-icon"></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/search.html"
+            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+            title="Search"
+          >
+            <i data-feather="search" class="float-icon"></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/logout.html"
+            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+            title="Log Out"
+          >
+            <i data-feather="log-out" class="float-icon"></i>
+          </a>
+        </li>
+        <li>
+          <!-- Dark Mode Toggle -->
+          <button
+            onclick="document.documentElement.classList.toggle('dark')"
+            id="themeToggle"
+            title="Toggle Dark Mode"
+            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+          >
+            <i data-feather="moon" class="float-icon"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
 
-</head>
-<body>
- <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/feather-icons"></script>
-<!-- ====== INTRO VIDEO ====== -->
-<video id="doorVideo"
-       src="/media/door1.mp4"      
-       muted
-       playsinline
-       preload="auto"
-       class="door">
-</video>
-  <!-- Navbar -->
-  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
-    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] " id="title">TheEnd.page</div>
-    <ul class="flex space-x-6 text-lg font-medium items-center">
-      <li>
-        <a href="/index.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
-          <i data-feather="home" class="float-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
-          <i data-feather="search" class="float-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
-          <i data-feather="log-out" class="float-icon "></i>
-        </a>
-      </li>
-      <li>
-        <!-- Dark Mode Toggle -->
-        <button onclick="document.documentElement.classList.toggle('dark')" id="themeToggle" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
-          <i data-feather="moon" class="float-icon"></i>
-        </button>
-      </li>
-    </ul>
-  </nav>
+    <!-- ====== CARD GRID (initially hidden) ====== -->
+    <div
+      id="choiceGrid"
+      class="grid grid-cols-2 auto-rows-fr gap-6 p-6 max-w-4xl mx-auto hide"
+    >
+      <div
+        class="card ironic rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold"
+        style="--img: url('/photos/Ironic.png')"
+      >
+        <span>Ironic</span>
+      </div>
+      <div
+        class="card dramatic rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold"
+        style="--img: url('/photos/Dramatic.png')"
+      >
+        <span>Dramatic</span>
+      </div>
+      <div
+        class="card cringe rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold"
+        style="--img: url('/photos/Super Cringe.png')"
+      >
+        <span>Super Cringe</span>
+      </div>
+      <div
+        class="card classy rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold"
+        style="--img: url('/photos/Classy.png')"
+      >
+        <span>Classy</span>
+      </div>
+      <div
+        class="card aggressive rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold"
+        style="--img: url('/photos/Passive Aggressive.png')"
+      >
+        <span>Passive Aggressive</span>
+      </div>
+      <div
+        class="card honest rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold"
+        style="--img: url('/photos/Honest.png')"
+      >
+        <span>Honest</span>
+      </div>
+    </div>
 
-<!-- ====== CARD GRID (initially hidden) ====== -->
-<div id="choiceGrid" class="grid grid-cols-2 auto-rows-fr gap-6 p-6 max-w-4xl mx-auto hide">
-  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Ironic.png');">
-    <span>Ironic</span>
-  </div>
-  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Dramatic.png');">
-    <span>Dramatic</span>
-  </div>
-  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Super Cringe.png');">
-    <span>Super Cringe</span>
-  </div>
-  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Classy.png');">
-    <span>Classy</span>
-  </div>
-  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Passive Aggressive.png');">
-    <span>Passive Aggressive</span>
-  </div>
-  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Honest.png');">
-    <span>Honest</span>
-  </div>
-</div>
+    <!-- ====== BACKDROP & MODAL ====== -->
+    <div id="backdrop" class="backdrop hide"></div>
 
-<!-- ====== BACKDROP & MODAL ====== -->
-<div id="backdrop" class="backdrop hide"></div>
+    <form id="prefModal" class="modal hide" autocomplete="off">
+      <h2 id="prefTitle">Your Preferences</h2>
+      <div id="dynamicFields"></div>
+      <div class="actions">
+        <button type="submit" class="btn primary">Save</button>
+        <button type="button" id="cancel" class="btn">Cancel</button>
+      </div>
+    </form>
 
-<form id="prefModal" class="modal hide" autocomplete="off">
-  <h2 id="prefTitle">Your Preferences</h2>
-  <div id="dynamicFields"></div>
-  <div class="actions">
-    <button type="submit" class="btn primary" onclick="window.location.href='message.html'">Save</button>
-    <button type="button" id="cancel" class="btn">Cancel</button>
-  </div>
-</form>
+    <!-- Feather Icons Activation -->
+    <script>
+      feather.replace();
+    </script>
 
-<!-- Feather Icons Activation -->
-  <script>
-    feather.replace();
-  </script>
-
-
-<script src="/JS/choice.js"></script>
-<script>
-const DARK_CSS = `
+    <script src="/JS/create.js"></script>
+    <script>
+      const DARK_CSS = `
   /* ---- global dark palette ---- */
   body{ background:#131313; color:#e6e6e6; }
 
@@ -107,20 +148,19 @@ const DARK_CSS = `
 
 `;
 
+      let darkOn = false;
+      let darkTag;
 
-let darkOn = false;
-let darkTag;
-
-document.getElementById('themeToggle').addEventListener('click', () => {
-  if (!darkOn) {
-    darkTag = document.createElement('style');
-    darkTag.textContent = DARK_CSS;
-    document.head.appendChild(darkTag);
-  } else {
-    darkTag.remove();
-  }
-  darkOn = !darkOn;
-});
-</script>
-</body>
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        if (!darkOn) {
+          darkTag = document.createElement("style");
+          darkTag.textContent = DARK_CSS;
+          document.head.appendChild(darkTag);
+        } else {
+          darkTag.remove();
+        }
+        darkOn = !darkOn;
+      });
+    </script>
+  </body>
 </html>

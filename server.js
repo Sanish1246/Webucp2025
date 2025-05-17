@@ -3,6 +3,7 @@ import session from 'express-session';
 import { connectToDb } from './db.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import bodyParser from 'body-parser';
 
 const app = express();
 const port = 8000;
@@ -14,11 +15,18 @@ const __dirname = path.dirname(__filename);
 app.use(session({ secret: 'Sanish12', resave: false, saveUninitialized: true, cookie: { secure: false } }));
 
 // Middleware
+
+// Use body-parser middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.json()); // ✅ Allowing parsing JSON
 
 // Routes
 import authRoutes from './routes/auth.js';
 app.use('/', authRoutes);
+
+import postRoute from './routes/createPost.js';
+app.use('/', postRoute);
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));

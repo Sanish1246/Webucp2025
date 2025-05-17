@@ -1,8 +1,6 @@
 /* ====== RESET ====== */
 *,*::before,*::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 /* ====== THEME VARS ====== */
@@ -232,4 +230,8 @@ select:focus {
   .actions {
     flex-direction: column;
   }
+}
+
+select {
+  padding: 0.5em !important;
 }
