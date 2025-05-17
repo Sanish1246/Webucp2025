@@ -18,6 +18,20 @@
         -webkit-backdrop-filter: blur(14px);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      .float-icon {
+        animation: float 2.5s ease-in-out infinite;
+      }
+
     }
   </style>
 </head>
@@ -26,25 +40,25 @@
   <!-- Navbar -->
   <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2">
     <div class="text-2xl font-bold tracking-wide text-[#2D2B22]">TheEnd.page</div>
-    <ul class="flex space-x-6 text-lg font-medium items-center">
+    <ul class="flex space-x-6 text-lg font-medium items-center" >
       <li>
-        <a href="/public/home.html" class="hover:text-[#747D86] transition" title="Home">
-          <i data-feather="home"></i>
+        <a href="/public/home.html" class="float-icon hover:text-[#747D86] transition" title="Home">
+          <i data-feather="home" class="float-icon"></i>
         </a>
       </li>
       <li>
         <a href="/search.html" class="hover:text-[#747D86] transition" title="Search">
-          <i data-feather="search"></i>
+          <i data-feather="search" class="float-icon"></i>
         </a>
       </li>
       <li>
         <a href="/public/account.html" class="hover:text-[#747D86] transition" title="Account">
-          <i data-feather="user"></i>
+          <i data-feather="user" class="float-icon"></i>
         </a>
       </li>
       <li>
         <a href="/logout.html" class="hover:text-[#747D86] transition" title="Log Out">
-          <i data-feather="log-out"></i>
+          <i data-feather="log-out" class="float-icon"></i>
         </a>
       </li>
     </ul>
@@ -52,7 +66,7 @@
 
   <!-- Hero Section -->
   <main class="flex flex-col items-center justify-center flex-1 text-center px-6 pt-40 pb-16">
-    <h1 class="text-5xl md:text-6xl font-extrabold text-[#2D2B22] mb-6 tracking-tight drop-shadow-md">
+    <h1 class="text-5xl md:text-6xl font-extrabold text-[#2D2B22] mb-6 tracking-tight drop-shadow-md float-icon">
       It's Over. Make It Count.
     </h1>
     <p class="text-xl md:text-2xl text-[#5B564F] max-w-2xl leading-relaxed mb-10 backdrop-blur-sm">
@@ -60,7 +74,7 @@
       <br><br>
       <span class="text-[#B29B7B] font-semibold">TheEnd.page</span> lets you create a dramatic, touching, sarcastic, or wild goodbye page that tells your side of the story — in your own style.
     </p>
-    <a href="/create.html" class="bg-[#2D2B22] text-[#FAF1E9] px-8 py-3 rounded-xl text-lg hover:bg-[#505101] transition shadow-md">
+    <a href="/create.html" class="bg-[#2D2B22] text-[#FAF1E9] px-8 py-3 rounded-xl text-lg hover:bg-[#505101] transition shadow-md float-icon">
       Craft Your Exit →
     </a>
   </main>
@@ -68,15 +82,15 @@
   <!-- Tone Preview Section -->
   <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto w-full px-6 pb-20">
     <div class="glass rounded-xl p-6 text-[#2D2B22] shadow-xl hover:scale-105 transition">
-      <h3 class="text-2xl font-bold mb-2">Dramatic</h3>
+      <h3 class="text-2xl font-bold mb-2 float-icon">Dramatic</h3>
       <p class="text-[#5B564F]">“This wasn’t just a goodbye. It was the final scene of a movie I never signed up for.”</p>
     </div>
     <div class="glass bg-opacity-30 rounded-xl p-6 text-[#FAF1E9] bg-[#B29B7B] shadow-xl hover:scale-105 transition">
-      <h3 class="text-2xl font-bold mb-2">Super Cringe</h3>
+      <h3 class="text-2xl font-bold mb-2 float-icon">Super Cringe</h3>
       <p>“Peace out, spreadsheet warriors. I’m taking my coffee mug and never looking back.”</p>
     </div>
     <div class="glass bg-opacity-30 rounded-xl p-6 text-white bg-[#747D86] shadow-xl hover:scale-105 transition">
-      <h3 class="text-2xl font-bold mb-2">Classy</h3>
+      <h3 class="text-2xl font-bold mb-2 float-icon">Classy</h3>
       <p>“To those I’ve worked with — thank you. To those I haven’t — you missed out.”</p>
     </div>
   </section>

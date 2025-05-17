@@ -13,6 +13,20 @@
         -webkit-backdrop-filter: blur(18px);
         border: 1px solid rgba(255, 255, 255, 0.25);
       }
+
+        @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      .float-icon {
+        animation: float 2.5s ease-in-out infinite;
+      }
+
     }
 
     .fade-in {
@@ -39,30 +53,30 @@
     <ul class="flex space-x-6 text-lg font-medium items-center">
       <li>
         <a href="/public/home.html" class="hover:text-[#747D86] transition" title="Home">
-          <i data-feather="home"></i>
+          <i data-feather="home" class="float-icon"></i>
         </a>
       </li>
       <li>
         <a href="/search.html" class="hover:text-[#747D86] transition" title="Search">
-          <i data-feather="search"></i>
+          <i data-feather="search" class="float-icon"></i>
         </a>
       </li>
       <li>
         <a href="/account.html" class="hover:text-[#747D86] transition" title="Account">
-          <i data-feather="user"></i>
+          <i data-feather="user" class="float-icon"></i>
         </a>
       </li>
       <li>
         <a href="/public/logout.html" class="hover:text-[#747D86] transition" title="Log Out">
-          <i data-feather="log-out"></i>
+          <i data-feather="log-out" class="float-icon"></i>
         </a>
       </li>
     </ul>
   </nav>
 
   <!-- Login/Register Card -->
-  <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150">
-    <h2 class="text-4xl font-extrabold text-center mb-10 text-[#2D2B22] tracking-tight">Welcome Back</h2>
+  <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150 float-icon">
+    <h2 class="text-4xl font-extrabold text-center mb-10 text-[#2D2B22] tracking-tight animate-pulse">Welcome Back</h2>
 
     <!-- Tab Buttons -->
     <div class="flex justify-center gap-6 mb-10">
