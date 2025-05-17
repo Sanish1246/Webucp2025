@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🌈 Exit Stage Left 💔 – TheEnd.page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Comic Neue', 'Indie Flower', cursive;
+      }
+
+      .fade-in {
+        animation: fadeIn 1.2s ease-in forwards;
+      }
+
+      .slide-up {
+        animation: slideUp 1s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes slideUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      .glow-text {
+        text-shadow: 1px 1px 6px #ff00f2;
+      }
+
+      .sparkle {
+        background: linear-gradient(135deg, #ff85ff, #ffe6fa, #ffcccc);
+        border: 2px dashed #ff4dd2;
+        box-shadow: 0 0 15px #ffc0cb;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-br from-pink-100 to-purple-200 text-[#3a003a] flex flex-col fade-in">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center bg-pink-300/60 backdrop-blur-md shadow-xl rounded-b-3xl mx-auto max-w-7xl mt-2 slide-up border-b border-pink-500">
+      <div class="text-3xl font-bold tracking-widest glow-text">✨TheEnd.page✨</div>
+      <ul class="flex space-x-6 text-lg items-center text-pink-800 font-bold">
+        <li><a href="/public/home.html" title="Cry here"><i data-feather="home" class="hover:text-pink-600"></i></a></li>
+        <li><a href="/search.html" title="Search for meaning"><i data-feather="search" class="hover:text-pink-600"></i></a></li>
+        <li><a href="/public/account.html" title="Your fake persona"><i data-feather="user" class="hover:text-pink-600"></i></a></li>
+        <li><a href="/logout.html" title="Dramatic exit 😭"><i data-feather="log-out" class="hover:text-pink-600"></i></a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-36 px-4 pb-8 max-w-3xl mx-auto w-full space-y-6 slide-up flex-grow">
+      <!-- Theme Metadata -->
+      <section class="sparkle p-4 rounded-3xl text-sm grid grid-cols-2 sm:grid-cols-4 gap-4 italic text-center">
+        <div>
+          <p class="font-bold text-pink-900">Font</p>
+          <p class="text-purple-700">Comic Sans-ish 😩</p>
+        </div>
+        <div>
+          <p class="font-bold text-pink-900">Vibe</p>
+          <p class="text-purple-700">✨Maximum Overfeel✨</p>
+        </div>
+        <div>
+          <p class="font-bold text-pink-900">Audio</p>
+          <p>Lo-fi Sad Beats 💿</p>
+        </div>
+        <div>
+          <p class="font-bold text-pink-900">Theme</p>
+          <p>Edgecore 💔🦇</p>
+        </div>
+      </section>
+
+      <!-- Goodbye Card -->
+      <section class="bg-white/90 p-6 rounded-2xl shadow-xl slide-up sparkle">
+        <div class="max-h-[400px] overflow-y-auto pr-2 space-y-4 fade-in">
+          <!-- Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <img src="uploads/default_profile.png" alt="Avatar" class="w-12 h-12 rounded-full border-4 border-pink-400 shadow-md" />
+              <div>
+                <p class="text-base font-bold text-pink-800">💔 user123 💔</p>
+                <p class="text-xs text-pink-600 italic">*cries in italics*</p>
+              </div>
+            </div>
+            <span class="text-xs px-3 py-1 bg-pink-100 border border-pink-300 rounded-full font-mono">🔥 Rant Mode</span>
+          </div>
+
+          <!-- Messages -->
+          <div class="space-y-6 mt-4">
+            <div>
+              <p class="text-lg leading-relaxed text-purple-900 italic glow-text">
+                This is it y'all... I'm literally evaporating into the void 😩💨
+              </p>
+            </div>
+            <div>
+              <img src="uploads/default_profile.png" alt="emotional explosion" class="max-w-xs max-h-64 w-auto h-auto object-contain mx-auto rounded-xl border-4 border-dotted border-pink-400" />
+            </div>
+            <div>
+              <p class="text-lg leading-relaxed text-purple-900 italic glow-text">
+                Like, every time I hit "post" it's basically a scream into the pixel abyss 🌌😭
+              </p>
+            </div>
+            <div>
+              <img src="uploads/default_profile.png" alt="second explosion" class="max-w-xs max-h-64 w-auto h-auto object-contain mx-auto rounded-xl border-4 border-double border-pink-300" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Hidden Audio Autoplay -->
+    <audio autoplay hidden>
+      <source src="/audio/lofi_sad.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Footer -->
+    <footer class="bg-pink-200/90 text-center p-4 text-pink-800 text-sm border-t border-pink-400 slide-up font-mono">
+      © 2025 <span class="font-extrabold">TheEnd.page</span> 💅 "Because therapy is too mainstream"
+    </footer>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
