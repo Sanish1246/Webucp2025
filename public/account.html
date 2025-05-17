@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TheEnd.page – Login / Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    @layer utilities {
+      .glass {
+        background: rgba(250, 241, 233, 0.2);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .ripple:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22]">
+
+  <!-- Navbar -->
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 backdrop-saturate-150">
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22]">TheEnd.page</div>
+    <ul class="flex space-x-6 text-lg font-medium items-center">
+      <li>
+        <a href="/home.html" class="hover:text-[#747D86] transition" title="Home">
+          <i data-feather="home"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/search.html" class="hover:text-[#747D86] transition" title="Search">
+          <i data-feather="search"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/account.html" class="hover:text-[#747D86] transition" title="Account">
+          <i data-feather="user"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/logout.html" class="hover:text-[#747D86] transition" title="Log Out">
+          <i data-feather="log-out"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Login/Register Card -->
+  <div class="glass p-10 rounded-[2rem] shadow-2xl w-full max-w-xl mt-20 backdrop-saturate-150">
+    <h2 class="text-4xl font-extrabold text-center mb-10 text-[#2D2B22] tracking-tight">Welcome Back</h2>
+
+    <!-- Tab Buttons -->
+    <div class="flex justify-center gap-6 mb-10">
+      <button id="loginTab" class="tab-btn px-6 py-2 text-[#2D2B22] font-semibold border-b-2 border-[#2D2B22] hover:text-[#747D86] transition">Login</button>
+      <button id="registerTab" class="tab-btn px-6 py-2 text-[#2D2B22] font-semibold border-b-2 border-transparent hover:border-[#747D86] hover:text-[#747D86] transition">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="space-y-6 fade-in">
+      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <button type="submit" class="ripple w-full bg-[#747D86] hover:bg-[#B29B7B] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Login</button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" class="space-y-6 hidden">
+      <input type="text" placeholder="Username" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="email" placeholder="Email" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <input type="password" placeholder="Password" class="w-full p-4 rounded-xl bg-white/30 text-[#2D2B22] placeholder-[#747D86] focus:ring-2 focus:ring-[#B29B7B] outline-none transition" />
+      <button type="submit" class="ripple w-full bg-[#B29B7B] hover:bg-[#747D86] transition p-4 rounded-2xl font-bold text-[#FAF1E9] shadow-md">Register</button>
+    </form>
+
+    <p class="text-center text-sm text-[#747D86] mt-10">
+      <a href="home.html" class="underline hover:text-[#2D2B22] transition">Back to Home</a>
+    </p>
+  </div>
+
+  <!-- Tab Toggle Script -->
+  <script>
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+
+    loginTab.addEventListener("click", () => {
+      loginForm.classList.remove("hidden");
+      loginForm.classList.add("fade-in");
+      registerForm.classList.add("hidden");
+      loginTab.classList.add("border-[#2D2B22]");
+      loginTab.classList.remove("border-transparent");
+      registerTab.classList.remove("border-[#2D2B22]");
+      registerTab.classList.add("border-transparent");
+    });
+
+    registerTab.addEventListener("click", () => {
+      registerForm.classList.remove("hidden");
+      registerForm.classList.add("fade-in");
+      loginForm.classList.add("hidden");
+      registerTab.classList.add("border-[#2D2B22]");
+      registerTab.classList.remove("border-transparent");
+      loginTab.classList.remove("border-[#2D2B22]");
+      loginTab.classList.add("border-transparent");
+    });
+  </script>
+
+  <!-- Activate Feather Icons -->
+  <script>
+    feather.replace();
+  </script>
+
+</body>
+</html>
