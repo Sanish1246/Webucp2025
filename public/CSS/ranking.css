@@ -1,0 +1,69 @@
+html,body{margin:0;height:100%;overflow:hidden;font-family:sans-serif;
+    background:linear-gradient(135deg,
+              #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
+              #747d86 70%, #505101 100%);
+    color:#ddd}
+
+/* ───── layout ───── */
+#leftPane{
+    position: fixed;
+  width:60vw;height:40vh;float:left;
+  display:flex;flex-direction:column;align-items:center;
+  
+}
+
+
+#podiumCanvas{
+     position: fixed;
+  width:60vw;height:60vh;float:left;
+  background:linear-gradient(135deg,
+              #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
+              #747d86 70%, #505101 100%);
+  border-radius:12px;outline:none;
+  box-shadow:0 0 18px rgba(0,0,0,.4);
+  margin-top:25rem; 
+
+}
+canvas#UI {
+  pointer-events: none;
+}
+/* trophy canvas on the right */
+#trophyCanvas{
+  width:30vw;height:100vh;
+  position:fixed;top:4vh;right:2vw;
+  background:linear-gradient(135deg,
+              #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
+              #747d86 70%, #505101 100%);
+  outline:none;
+  border-radius:12px;box-shadow:0 0 18px rgba(0,0,0,.4);
+}
+#trophyCanvas,
+#podiumCanvas {
+  background: none;      /* let the page background show through */
+  border-radius: 0;      /* no rounding */
+  box-shadow: none;      /* no shadow */
+  outline: none;         /* we already had focus:none, keep it */
+}
+
+#rankingText {
+  margin-top: 11rem;  /* push it down by 2rem */
+  color: black;
+  font-weight: bold;
+  font-size: 50px;
+  margin-right: 100px;
+}
+#rankingText {
+  margin-top: 5rem;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+#rankingList {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  color: #222;
+  list-style-position: inside;
+}
+#rankingList li + li {
+  margin-top: .5rem;
+}
