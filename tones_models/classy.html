@@ -1,140 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Compose Your Goodbye – TheEnd.page</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Feather Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-   <script>
-    tailwind.config = {
-      darkMode: 'class',
-    };
-  </script>
-
-  <style>
-    @layer utilities {
-      .glass {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exit Stage Left – TheEnd.page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      .fade-in {
+        animation: fadeIn 1.2s ease-in forwards;
       }
 
-      .dark .glass {
-        background: rgba(50, 50, 50, 0.25);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+      .slide-up {
+        animation: slideUp 1s ease-out forwards;
       }
 
-      @keyframes float {
-        0%, 100% {
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
           transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-4px);
+          opacity: 1;
         }
       }
+    </style>
+  </head>
 
-      .float-icon {
-        animation: float 2.5s ease-in-out infinite;
-      }
+  <body class="min-h-screen bg-[#F3F0EB] text-[#2E2A26] flex flex-col fade-in" style="font-family: 'Georgia', serif;">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center bg-[#FAF9F6]/80 backdrop-blur-sm border-b border-[#D8CFC2] shadow-md mx-auto max-w-7xl mt-2 slide-up">
+      <div class="text-2xl font-bold text-[#3B3732] tracking-wide">TheEnd.page</div>
+      <ul class="flex space-x-6 text-lg items-center text-[#3B3732]">
+        <li><a href="/public/home.html" title="Home"><i data-feather="home" class="hover:text-[#A88E63]"></i></a></li>
+        <li><a href="/search.html" title="Search"><i data-feather="search" class="hover:text-[#A88E63]"></i></a></li>
+        <li><a href="/public/account.html" title="Account"><i data-feather="user" class="hover:text-[#A88E63]"></i></a></li>
+        <li><a href="/logout.html" title="Log Out"><i data-feather="log-out" class="hover:text-[#A88E63]"></i></a></li>
+      </ul>
+    </nav>
 
-      textarea::placeholder {
-        color: #a8a29e;
-      }
-
-      .preview-item img, .preview-item video {
-        max-width: 100%;
-        border-radius: 1rem;
-        margin-top: 0.5rem;
-      }
-    }
-  </style>
-</head>
-<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] dark:from-[#1b1b1b] dark:via-[#2a2a2a] dark:to-[#1e1e1e] text-[#2D2B22] dark:text-[#f5f5f5] min-h-screen font-sans flex flex-col overflow-x-hidden">
-
-  <!-- Navbar -->
-  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
-    <div class="text-2xl font-bold tracking-wide text-[#2D2B22] dark:text-[#f0e8dc]">TheEnd.page</div>
-    <ul class="flex space-x-6 text-lg font-medium items-center">
-      <li>
-        <a href="/index.html" class="float-icon hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Home">
-          <i data-feather="home" class="float-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
-          <i data-feather="search" class="float-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/account.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
-          <i data-feather="user" class="float-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
-          <i data-feather="log-out" class="float-icon"></i>
-        </a>
-      </li>
-      <li>
-        <!-- Dark Mode Toggle -->
-        <button onclick="document.documentElement.classList.toggle('dark')" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
-          <i data-feather="moon"></i>
-        </button>
-      </li>
-    </ul>
-  </nav>
-
-  <main class="pt-40 px-4 md:px-12 pb-24 flex-grow flex flex-col items-center">
-    <!-- Title -->
-    <h2 class="text-3xl font-semibold text-[#3E3B2D] dark:text-[#f5f5f5] mb-6">Your Goodbye Preview</h2>
-
-    <!-- Preview Container: Intatto -->
-    <div id="previewContainer" class="w-full max-w-4xl bg-[#DCCBB2]/30 backdrop-blur-md p-8 rounded-2xl border border-[#B29B7B]/20 shadow-inner overflow-y-auto space-y-2 text-[#2D2B22] leading-relaxed text-lg">
-      <!-- Messages will appear here as flowing text -->
-    </div>
-
-    <!-- Interaction Bar -->
-    <div class="glass rounded-2xl w-full max-w-4xl p-6 shadow-xl mt-10 dark:bg-white/10 dark:border-white/10">
-      <div class="flex flex-col md:flex-row items-center gap-4">
-        <textarea id="bioInput" rows="3" placeholder="Write your message..." class="w-full resize-none p-4 text-lg rounded-xl border border-[#B29B7B]/30 bg-[#FAF1E9] dark:bg-[#2b2b2b] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#B29B7B]/50"></textarea>
-
-        <div class="flex flex-row gap-4 mt-2 md:mt-0">
-          <button type="button" id="sendMessage" class="bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] dark:bg-[#f5f5f5] dark:text-[#2D2B22] dark:hover:bg-[#d6d6d6] p-3 rounded-xl shadow-md float-icon" title="Send">
-            <i data-feather="send"></i>
-          </button>
-
-          <label for="mediaUpload" class="cursor-pointer bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] dark:bg-[#f5f5f5] dark:text-[#2D2B22] dark:hover:bg-[#d6d6d6] p-3 rounded-xl shadow-md float-icon" title="Upload Media">
-            <i data-feather="upload"></i>
-          </label>
-          <input type="file" id="mediaUpload" accept="image/*,video/*" class="hidden" />
-
-          <button type="button" id="saveMessage" class="bg-[#2D2B22] hover:bg-[#505101] text-[#FAF1E9] dark:bg-[#f5f5f5] dark:text-[#2D2B22] dark:hover:bg-[#d6d6d6] p-3 rounded-xl shadow-md float-icon" title="Save">
-            <i data-feather="save"></i>
-          </button>
+    <!-- Main Content -->
+    <main class="pt-36 px-4 pb-10 max-w-3xl mx-auto w-full space-y-6 slide-up flex-grow">
+      <!-- Theme Metadata -->
+      <section class="bg-[#FAF9F6] p-4 rounded-xl shadow text-sm grid grid-cols-2 sm:grid-cols-4 gap-4 border border-[#D8CFC2]">
+        <div>
+          <p class="font-semibold text-[#3B3732]">Font</p>
+          <p class="text-[#2E2A26]">Georgia</p>
         </div>
-      </div>
-    </div>
-  </main>
+        <div>
+          <p class="font-semibold text-[#3B3732]">Color Tone</p>
+          <div class="mt-1 w-6 h-6 rounded-full border border-[#C5B8A3] shadow-inner bg-[#F3F0EB]"></div>
+        </div>
+        <div>
+          <p class="font-semibold text-[#3B3732]">Audio</p>
+          <p>Solo Piano 🎶</p>
+        </div>
+        <div>
+          <p class="font-semibold text-[#3B3732]">Theme</p>
+          <p>Refined Exit</p>
+        </div>
+      </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#E0CEB1]/70 dark:bg-[#1e1e1e]/70 backdrop-blur-sm text-center p-4 text-[#2D2B22] dark:text-[#f5f5f5] border-t border-[#B29B7B]/30 dark:border-white/10">
-    © 2025 <span class="font-semibold">TheEnd.page</span>. Write it your way.
-  </footer>
+      <!-- Goodbye Card -->
+      <section class="bg-white p-6 rounded-xl shadow-lg slide-up border border-[#D8CFC2]">
+        <div class="max-h-[400px] overflow-y-auto pr-2 space-y-5 fade-in">
+          <!-- Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <img src="uploads/default_profile.png" alt="User Avatar" class="w-10 h-10 rounded-full border border-[#C0B29A] shadow-sm" />
+              <div>
+                <p class="text-base font-semibold text-[#2E2A26]">User123</p>
+                <p class="text-sm text-[#A88E63] italic">A final toast</p>
+              </div>
+            </div>
+            <span class="text-xs px-3 py-1 bg-[#F3F0EB] border border-[#C5B8A3] rounded-full text-[#5A5245]">Elegant</span>
+          </div>
 
+          <!-- Interleaved Content Blocks -->
+          <div class="space-y-4 mt-2">
+            <!-- Message -->
+            <div>
+              <p class="text-base leading-relaxed text-[#3B3732] italic">
+                Some exits don’t need applause. Just a soft click of the door and the grace of having been here.
+              </p>
+            </div>
 
-  <script src="../JS/message.js"></script>
-  <script>
-  feather.replace();
-        //Icon toggle
-    document.querySelector('button[onclick]').addEventListener('click', () => {
-      setTimeout(() => feather.replace(), 10);
-    });
-  </script>
-</body>
+            <!-- Image -->
+            <div>
+              <div class="rounded-md overflow-hidden border border-[#D8CFC2]">
+                <img src="uploads/default_profile.png" alt="Elegant Scene" class="max-w-xs max-h-64 w-auto h-auto object-contain" />
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <p class="text-base leading-relaxed text-[#3B3732] italic">
+                Farewell not with fanfare — but with clarity, calm, and a quiet nod to those who made it worthwhile.
+              </p>
+            </div>
+
+            <!-- Image -->
+            <div>
+              <div class="rounded-md overflow-hidden border border-[#D8CFC2]">
+                <img src="uploads/default_profile.png" alt="Scene" class="max-w-xs max-h-64 w-auto h-auto object-contain" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Hidden Audio Autoplay -->
+    <audio autoplay hidden>
+      <source src="/audio/soft-piano-loop.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Footer -->
+    <footer class="bg-[#F3F0EB] text-center p-4 text-sm text-[#5A5245] border-t border-[#D8CFC2] slide-up">
+      © 2025 <span class="font-semibold text-[#3B3732]">TheEnd.page</span>. Leave like you lived — with style.
+    </footer>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
 </html>
