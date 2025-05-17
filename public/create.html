@@ -19,7 +19,6 @@
        class="door">
 </video>
   <!-- Navbar -->
-   <!-- Navbar -->
   <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]">
     <div class="text-2xl font-bold tracking-wide text-[#2D2B22] " id="title">TheEnd.page</div>
     <ul class="flex space-x-6 text-lg font-medium items-center">
@@ -35,25 +34,38 @@
       </li>
       <li>
         <a href="/logout.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Log Out">
-          <i data-feather="log-out" class="float-icon"></i>
+          <i data-feather="log-out" class="float-icon "></i>
         </a>
       </li>
       <li>
         <!-- Dark Mode Toggle -->
         <button onclick="document.documentElement.classList.toggle('dark')" id="themeToggle" title="Toggle Dark Mode" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition">
-          <i data-feather="moon"></i>
+          <i data-feather="moon" class="float-icon"></i>
         </button>
       </li>
     </ul>
   </nav>
+
 <!-- ====== CARD GRID (initially hidden) ====== -->
-<div id="choiceGrid" class="grid hide">
-  <div class="card" style="--img:url('/photos/Ironic.png');"><span>Ironic</span></div>
-  <div class="card" style="--img:url('/photos/Dramatic.png');"><span>Dramatic</span></div>
-  <div class="card" style="--img:url('/photos/Super Cringe.png');"><span>Super Cringe</span></div>
-  <div class="card" style="--img:url('/photos/Classy.png');"><span>Classy</span></div>
-  <div class="card" style="--img:url('/photos/Passive Aggressive.png');"><span>Passive Aggressive</span></div>
-  <div class="card" style="--img:url('/photos/Honest.png');"><span>Honest</span></div>
+<div id="choiceGrid" class="grid grid-cols-2 auto-rows-fr gap-6 p-6 max-w-4xl mx-auto hide">
+  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Ironic.png');">
+    <span>Ironic</span>
+  </div>
+  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Dramatic.png');">
+    <span>Dramatic</span>
+  </div>
+  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Super Cringe.png');">
+    <span>Super Cringe</span>
+  </div>
+  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Classy.png');">
+    <span>Classy</span>
+  </div>
+  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Passive Aggressive.png');">
+    <span>Passive Aggressive</span>
+  </div>
+  <div class="card rounded-2xl bg-white/10 p-8 min-h-[160px] shadow-md text-white flex items-end justify-center text-xl font-semibold" style="--img:url('/photos/Honest.png');">
+    <span>Honest</span>
+  </div>
 </div>
 
 <!-- ====== BACKDROP & MODAL ====== -->
@@ -67,10 +79,13 @@
     <button type="button" id="cancel" class="btn">Cancel</button>
   </div>
 </form>
+
 <!-- Feather Icons Activation -->
   <script>
     feather.replace();
   </script>
+
+
 <script src="/JS/choice.js"></script>
 <script>
 const DARK_CSS = `
@@ -90,7 +105,6 @@ const DARK_CSS = `
   /* …or, if your titles are just h1/h2 elements:
      h1,h2{ color:#ffffff; }                         */
 
-  /* add more dark rules here… */
 `;
 
 
