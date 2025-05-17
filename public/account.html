@@ -52,21 +52,41 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
-        /*Styling for system messages*/
-    #system-message{
-        left: 50%;
-        transform: translateX(-50%);
-        position: absolute;
-        margin:0 auto;
-        background: linear-gradient(90deg, hsl(290, 96%, 40%, 1), hsl(0, 96%, 60%, 1));
-        padding: 20px 20px 20px 20xpx;
-        z-index: 60;
-        top:0;
-        opacity:0;
-        border-radius: 2px;
-        border: 1px solid black;
-        font-size: 1.5rem;
-    }
+  /*Styling for system messages*/
+  #system-message {
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 1rem;
+  margin: 0 auto;
+  z-index: 60;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(250, 241, 233, 0.3);
+  color: #2D2B22;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Dark mode support */
+.dark #system-message {
+  background: rgba(50, 50, 50, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f0e8dc;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Optional animation class for visibility */
+#system-message.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
   </style>
 </head>
 <body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] min-h-screen flex items-center justify-center px-4 text-[#2D2B22] dark:bg-gradient-to-br dark:from-[#121212] dark:via-[#2c2c2c] dark:to-[#3f3f3f] dark:text-[#f0e8dc] transition-colors duration-500">
