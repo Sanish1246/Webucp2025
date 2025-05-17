@@ -3,7 +3,7 @@ document.getElementById('sendMessage').addEventListener('click', () => {
   if (text !== '') {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'preview-item';
-    messageDiv.textContent = text;
+    messageDiv.innerHTML = text.replace(/\n/g, '<br>');
     document.getElementById('previewContainer').appendChild(messageDiv);
     document.getElementById('bioInput').value = '';
   }
