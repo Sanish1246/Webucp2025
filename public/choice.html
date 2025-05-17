@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select Your Goodbye Tone – TheEnd.page</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    @layer utilities {
+      .glass {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+
+      .float-icon {
+        animation: float 2.5s ease-in-out infinite;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] text-[#2D2B22] min-h-screen font-sans">
+
+  <!-- Navbar -->
+  <nav class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2">
+    <div class="text-2xl font-bold tracking-wide text-[#2D2B22]">TheEnd.page</div>
+    <ul class="flex space-x-6 text-lg font-medium items-center">
+      <li><a href="/public/home.html" class="float-icon hover:text-[#747D86]" title="Home"><i data-feather="home" class="float-icon"></i></a></li>
+      <li><a href="/search.html" class="hover:text-[#747D86]" title="Search"><i data-feather="search"  class="float-icon"></i></a></li>
+      <li><a href="/public/account.html" class="hover:text-[#747D86]" title="Account"><i data-feather="user"  class="float-icon"></i></a></li>
+      <li><a href="/logout.html" class="hover:text-[#747D86]" title="Log Out"><i data-feather="log-out" class="float-icon"></i></a></li>
+    </ul>
+  </nav>
+
+  <!-- Form Section -->
+  <main class="pt-40 px-6 pb-16 max-w-6xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-12 float-icon">Choose Your Goodbye Tone</h1>
+    
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Tone Card Template -->
+      <!-- 1. Dramatic -->
+      <div class="glass p-6 rounded-xl shadow-xl space-y-4">
+        <h2 class="text-2xl font-bold">Dramatic</h2>
+        <p>"This isn’t just a goodbye — it’s a performance."</p>
+        <div>
+          <p class="font-semibold mb-1">Fonts:</p>
+          <label><input type="radio" name="dramaticFont" value="Cinzel" class="mr-2">Cinzel</label><br>
+          <label><input type="radio" name="dramaticFont" value="Playfair Display" class="mr-2">Playfair Display</label>
+        </div>
+        <div>
+          <p class="font-semibold mb-1">Audio:</p>
+          <label><input type="radio" name="dramaticAudio" value="violin" class="mr-2">Sad Violin</label><br>
+          <label><input type="radio" name="dramaticAudio" value="thunder" class="mr-2">Thunder Roll</label>
+        </div>
+      </div>
+
+      <!-- 2. Super Cringe -->
+      <div class="glass p-6 rounded-xl shadow-xl space-y-4 bg-[#B29B7B]/50">
+        <h2 class="text-2xl font-bold">Super Cringe</h2>
+        <p>"I came. I saw. I spreadsheeted. I'm out."</p>
+        <div>
+          <p class="font-semibold mb-1">Fonts:</p>
+          <label><input type="radio" name="cringeFont" value="Comic Sans MS" class="mr-2">Comic Sans MS</label><br>
+          <label><input type="radio" name="cringeFont" value="Indie Flower" class="mr-2">Indie Flower</label>
+        </div>
+        <div>
+          <p class="font-semibold mb-1">Audio:</p>
+          <label><input type="radio" name="cringeAudio" value="clown" class="mr-2">Clown Horn</label><br>
+          <label><input type="radio" name="cringeAudio" value="boing" class="mr-2">Boing Sound</label>
+        </div>
+      </div>
+
+      <!-- 3. Classy -->
+      <div class="glass p-6 rounded-xl shadow-xl space-y-4 bg-[#747D86]/50 text-black">
+        <h2 class="text-2xl font-bold">Classy</h2>
+        <p>"Thank you all. It’s been a pleasure."</p>
+        <div>
+          <p class="font-semibold mb-1">Fonts:</p>
+          <label><input type="radio" name="classyFont" value="Georgia" class="mr-2">Georgia</label><br>
+          <label><input type="radio" name="classyFont" value="Merriweather" class="mr-2">Merriweather</label>
+        </div>
+        <div>
+          <p class="font-semibold mb-1">Audio:</p>
+          <label><input type="radio" name="classyAudio" value="piano" class="mr-2">Soft Piano</label><br>
+          <label><input type="radio" name="classyAudio" value="harp" class="mr-2">Harp Exit</label>
+        </div>
+      </div>
+
+      <!-- 4. Touching -->
+      <div class="glass p-6 rounded-xl shadow-xl space-y-4">
+        <h2 class="text-2xl font-bold">Touching</h2>
+        <p>"To everyone who helped me grow — thank you."</p>
+        <div>
+          <p class="font-semibold mb-1">Fonts:</p>
+          <label><input type="radio" name="touchingFont" value="Dancing Script" class="mr-2">Dancing Script</label><br>
+          <label><input type="radio" name="touchingFont" value="Raleway" class="mr-2">Raleway</label>
+        </div>
+        <div>
+          <p class="font-semibold mb-1">Audio:</p>
+          <label><input type="radio" name="touchingAudio" value="acoustic" class="mr-2">Acoustic Guitar</label><br>
+          <label><input type="radio" name="touchingAudio" value="ambient" class="mr-2">Soft Ambient</label>
+        </div>
+      </div>
+
+      <!-- 5. Passive Aggressive -->
+      <div class="glass p-6 rounded-xl shadow-xl space-y-4 col-span-full">
+        <h2 class="text-2xl font-bold">Passive Aggressive</h2>
+        <p>"To those who made it harder — bless your heart."</p>
+        <div>
+          <p class="font-semibold mb-1">Fonts:</p>
+          <label><input type="radio" name="passiveFont" value="Baskerville" class="mr-2">Baskerville</label><br>
+          <label><input type="radio" name="passiveFont" value="Courier New" class="mr-2">Courier New</label>
+        </div>
+        <div>
+          <p class="font-semibold mb-1">Audio:</p>
+          <label><input type="radio" name="passiveAudio" value="sassy" class="mr-2">Sassy Strings</label><br>
+          <label><input type="radio" name="passiveAudio" value="drip" class="mr-2">Drip Sound</label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-span-full text-center mt-8">
+        <button type="submit" class="bg-[#2D2B22] text-[#FAF1E9] px-8 py-3 rounded-xl text-lg hover:bg-[#505101] transition shadow-md">
+          Confirm Your Style →
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Feather Icons Activation -->
+  <script>
+    feather.replace();
+  </script>
+
+</body>
+</html>
