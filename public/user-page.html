@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script type="module" src="JS/user-page.js"></script>
+    <script type="module" src="JS/search-button.js"></script>
     <style>
       .fade-in {
         animation: fadeIn 1.2s ease-in forwards;
@@ -164,9 +165,13 @@
           ></a>
         </li>
         <li>
-          <a href="/search.html" title="Search"
-            ><i data-feather="search" class="dynamic-icon"></i
-          ></a>
+          <button
+            id="openSearchModal"
+            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+            title="Search"
+          >
+            <i data-feather="search" class="float-icon"></i>
+          </button>
         </li>
         <li>
           <a href="/public/account.html" title="Account"
@@ -221,7 +226,7 @@
                 class="w-10 h-10 rounded-full shadow object-cover"
               />
               <div>
-                <p class="text-base dynamic-font">User123</p>
+                <p class="text-base dynamic-font username">User123</p>
                 <p class="text-sm italic font-bold dynamic-subtext title-type">
                   Final Bow
                 </p>
@@ -283,9 +288,65 @@
 
     <!-- Hidden Audio Autoplay -->
     <audio autoplay hidden class="dynamic-audio audio-player">
-      <source src="" type="audio/mpeg" />
+      <source src="sound/boing-sound.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+
+    <!-- Search Modal -->
+    <div
+      id="searchModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="glass p-6 rounded-xl max-w-md w-full relative shadow-xl text-[#2D2B22] dark:text-[#f0e8dc] bg-white dark:bg-[#2a2a2a]"
+      >
+        <h2 class="text-2xl font-bold mb-4">Choose a Category</h2>
+        <form id="searchForm" class="space-y-4">
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input type="radio" name="category" value="Ironic" checked />
+              Ironic</label
+            >
+            <label
+              ><input type="radio" name="category" value="Dramatic" />
+              Dramatic</label
+            >
+            <label
+              ><input type="radio" name="category" value="Super Cringe" /> Super
+              Cringe</label
+            >
+            <label
+              ><input type="radio" name="category" value="Classy" />
+              Classy</label
+            >
+            <label
+              ><input type="radio" name="category" value="Passive Aggressive" />
+              Passive Aggressive</label
+            >
+            <label
+              ><input type="radio" name="category" value="Honest" />
+              Honest</label
+            >
+          </div>
+
+          <div class="flex justify-between mt-6">
+            <button
+              type="button"
+              id="closeSearchModal"
+              class="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-[#2D2B22] text-[#FAF1E9] dark:bg-[#FAF1E9] dark:text-[#2D2B22] px-4 py-2 rounded hover:bg-[#505101] dark:hover:bg-[#d6d6d6] transition"
+            >
+              Search →
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="text-center p-4 border-t slide-up dynamic-footer">

@@ -139,6 +139,31 @@ postRoute.get('/api/post/user-page', async (req, res) => {
   }
 });
 
+postRoute.get('/api/post/theme/user-page', async (req, res) => {
+  try {
+    const { theme } = req.query;
+
+    if (!theme) {
+      return res.status(400).json({ error: 'Missing theme query parameter' });
+    }
+
+    // Case-insensitive search using regex
+    const posts = await Post.find({ theme: new RegExp(`^${theme}$`, 'i') }).sort({ _id: -1 });
+
+    if (posts.length === 0) {
+      return res.status(404).json({ error: `No posts found with theme: ${theme}` });
+    }
+
+    res.status(200).json({ posts });
+
+  } catch (error) {
+    console.error('Error fetching posts by theme:', error);
+    res.status(500).json({ error: 'Server error while fetching posts by theme' });
+  }
+});
+
+
+
 
 
 export default postRoute;
