@@ -162,8 +162,4 @@ postRoute.get('/api/post/theme/user-page', async (req, res) => {
   }
 });
 
-
-
-
-
 export default postRoute;

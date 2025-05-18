@@ -51,10 +51,15 @@
       <ul class="flex space-x-6 text-lg font-medium items-center">
         <li>
           <a
-            href="/public/home.html"
+            href="/index.html"
             class="float-icon hover:text-[#747D86]"
             title="Home"
             ><i data-feather="home" class="float-icon"></i
+          ></a>
+        </li>
+        <li>
+          <a href="/ranking.html" class="hover:text-[#747D86]" title="Log Out"
+            ><i data-feather="hash" class="float-icon"></i
           ></a>
         </li>
         <li>
@@ -67,7 +72,7 @@
           </button>
         </li>
         <li>
-          <a href="/account.html" class="hover:text-[#747D86]" title="Account"
+          <a href="" onclick="openLogin(event)"class="hover:text-[#747D86]" title="Account"
             ><i data-feather="user" class="float-icon"></i
           ></a>
         </li>
@@ -158,6 +163,22 @@
     <!-- Feather Icons Init -->
     <script>
       feather.replace();
+
+          async function openLogin(event){
+    event.preventDefault();
+      try {
+  const response = await fetch('/login');
+  const data = await response.json();
+  if (data.email) {
+    window.location.href = '/user-page.html';
+  } else {
+    window.location.href = '/account.html';
+  }
+  console.log(data);
+} catch (error) {
+  console.error('Error:', error);
+}
+          }
     </script>
   </body>
 </html>

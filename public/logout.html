@@ -101,12 +101,17 @@
         </a>
       </li>
       <li>
+        <a href="/ranking.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
+          <i data-feather="hash" class="float-icon"></i>
+        </a>
+      </li>
+      <li>
         <a href="/search.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Search">
           <i data-feather="search" class="float-icon"></i>
         </a>
       </li>
       <li>
-        <a href="/account.html" class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
+        <a href="" onclick="openLogout(event)"class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition" title="Account">
           <i data-feather="user" class="float-icon"></i>
         </a>
       </li>
@@ -176,6 +181,22 @@
   function closeMessage(){  //Function to close the system message
     systemMessage.style.opacity='0';
 }
+
+    async function openLogin(event){
+    event.preventDefault();
+      try {
+  const response = await fetch('/login');
+  const data = await response.json();
+  if (data.email) {
+    window.location.href = '/user-page.html';
+  } else {
+    window.location.href = '/account.html';
+  }
+  console.log(data);
+} catch (error) {
+  console.error('Error:', error);
+}
+    }
   </script>
 
 </body>
