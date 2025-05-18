@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Select Your Goodbye Tone – TheEnd.page</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script type="module" src="JS/search.js"></script>
+    <script type="module" src="JS/search-button.js"></script>
+
+    <style>
+      @layer utilities {
+        .glass {
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-4px);
+          }
+        }
+
+        .float-icon {
+          animation: float 2.5s ease-in-out infinite;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-[#FAF1E9] via-[#ECE2D0] to-[#E0CEB1] text-[#2D2B22] min-h-screen font-sans"
+  >
+    <!-- Navbar -->
+    <nav
+      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2"
+    >
+      <div class="text-2xl font-bold tracking-wide text-[#2D2B22]">
+        TheEnd.page
+      </div>
+      <ul class="flex space-x-6 text-lg font-medium items-center">
+        <li>
+          <a
+            href="/public/home.html"
+            class="float-icon hover:text-[#747D86]"
+            title="Home"
+            ><i data-feather="home" class="float-icon"></i
+          ></a>
+        </li>
+        <li>
+          <button
+            id="openSearchModal"
+            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+            title="Search"
+          >
+            <i data-feather="search" class="float-icon"></i>
+          </button>
+        </li>
+        <li>
+          <a href="/account.html" class="hover:text-[#747D86]" title="Account"
+            ><i data-feather="user" class="float-icon"></i
+          ></a>
+        </li>
+        <li>
+          <a href="/logout.html" class="hover:text-[#747D86]" title="Log Out"
+            ><i data-feather="log-out" class="float-icon"></i
+          ></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Static Cards Section -->
+    <main class="pt-40 px-6 pb-16 max-w-6xl mx-auto">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-center mb-12 float-icon"
+      >
+        Preview
+      </h1>
+      <div
+        id="card-container"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8"
+      ></div>
+    </main>
+
+    <!-- Search Modal -->
+    <div
+      id="searchModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="glass p-6 rounded-xl max-w-md w-full relative shadow-xl text-[#2D2B22] dark:text-[#f0e8dc] bg-white dark:bg-[#2a2a2a]"
+      >
+        <h2 class="text-2xl font-bold mb-4">Choose a Category</h2>
+        <form id="searchForm" class="space-y-4">
+          <div class="flex flex-col space-y-2">
+            <label
+              ><input type="radio" name="category" value="Ironic" checked />
+              Ironic</label
+            >
+            <label
+              ><input type="radio" name="category" value="Dramatic" />
+              Dramatic</label
+            >
+            <label
+              ><input type="radio" name="category" value="Super Cringe" /> Super
+              Cringe</label
+            >
+            <label
+              ><input type="radio" name="category" value="Classy" />
+              Classy</label
+            >
+            <label
+              ><input type="radio" name="category" value="Passive Aggressive" />
+              Passive Aggressive</label
+            >
+            <label
+              ><input type="radio" name="category" value="Honest" />
+              Honest</label
+            >
+          </div>
+
+          <div class="flex justify-between mt-6">
+            <button
+              type="button"
+              id="closeSearchModal"
+              class="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-[#2D2B22] text-[#FAF1E9] dark:bg-[#FAF1E9] dark:text-[#2D2B22] px-4 py-2 rounded hover:bg-[#505101] dark:hover:bg-[#d6d6d6] transition"
+            >
+              Search →
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="bg-[#E0CEB1]/70 backdrop-blur-sm text-center p-4 text-[#2D2B22] border-t border-[#B29B7B]/30"
+    >
+      © 2025 <span class="font-semibold">TheEnd.page</span>. Write it your way.
+    </footer>
+
+    <!-- Feather Icons Init -->
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

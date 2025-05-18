@@ -3,6 +3,7 @@ import { Post } from '../models/Post.js';
 import express from 'express';
 import fileUpload from 'express-fileupload';
 import fs from 'fs';
+import mongoose from 'mongoose'
 
 const __dirname = import.meta.dirname;
 const postRoute = express.Router();
@@ -12,13 +13,15 @@ postRoute.use(fileUpload());
 
 postRoute.post('/api/post', async (req, res) => {
   try {
-    // if (!req.session.user) {
-    //   return res.status(401).json({ error: 'Unauthorized: No user session found' });
-    // }
+    if (!req.session.user) {
+      return res.status(401).json({ error: 'Unauthorized: No user session found' });
+    }
 
-    const username = "Sam";
+    
     const { title, likes, theme, font, music } = req.body;
     const contentArray = [];
+
+    const username = req.session.user.username;
 
     const uploadDir = path.join(__dirname, '..', 'public', 'uploads');
     if (!fs.existsSync(uploadDir)) {
@@ -91,5 +94,76 @@ postRoute.post('/api/post', async (req, res) => {
     res.status(500).json({ error: 'Server error while creating post' });
   }
 });
+
+postRoute.get('/api/post', async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.status(401).json({ error: 'Unauthorized: No user session found' });
+    }
+
+    const username = req.session.user.username;
+
+    const userPosts = await Post.find({ username }).sort({ _id: -1 });
+
+    res.status(200).json({ posts: userPosts });
+
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    res.status(500).json({ error: 'Server error while fetching posts' });
+  }
+});
+
+postRoute.get('/api/post/user-page', async (req, res) => {
+  try {
+    const { id } = req.query;
+
+    if (!id) {
+      return res.status(400).json({ error: 'Missing post ID in query' });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid post ID format' });
+    }
+
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    res.status(200).json({ post });
+
+  } catch (error) {
+    console.error('Error fetching post by ID:', error);
+    res.status(500).json({ error: 'Server error while fetching post' });
+  }
+});
+
+postRoute.get('/api/post/theme/user-page', async (req, res) => {
+  try {
+    const { theme } = req.query;
+
+    if (!theme) {
+      return res.status(400).json({ error: 'Missing theme query parameter' });
+    }
+
+    // Case-insensitive search using regex
+    const posts = await Post.find({ theme: new RegExp(`^${theme}$`, 'i') }).sort({ _id: -1 });
+
+    if (posts.length === 0) {
+      return res.status(404).json({ error: `No posts found with theme: ${theme}` });
+    }
+
+    res.status(200).json({ posts });
+
+  } catch (error) {
+    console.error('Error fetching posts by theme:', error);
+    res.status(500).json({ error: 'Server error while fetching posts by theme' });
+  }
+});
+
+
+
+
 
 export default postRoute;

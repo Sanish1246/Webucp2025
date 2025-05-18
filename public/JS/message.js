@@ -66,10 +66,10 @@ document.getElementById('saveMessage').addEventListener('click', () => {
     }
   }
 
-  const userPrefs = sessionStorage.getItem('userPreferences');
-  if (userPrefs) {
-    formData.append('userPreferences', userPrefs);
-  }
+  const prefs = JSON.parse(sessionStorage.getItem('userPreferences') || '{}');
+formData.append('theme', prefs.theme || '');
+formData.append('font', prefs.font || '');
+formData.append('music', prefs.music || '');
 
   fetch('/api/post', {
     method: 'POST',
@@ -83,6 +83,7 @@ document.getElementById('saveMessage').addEventListener('click', () => {
     console.log('Success:', data);
     container.innerHTML = '';
     uploadedFiles.length = 0;
+    window.location.href = 'category.html'; 
   })
   .catch(error => {
     console.error('Error:', error);
