@@ -114,9 +114,9 @@ async function openLogin(event){
   const response = await fetch('/login');
   const data = await response.json();
   if (data.email) {
-    window.location.href = './HTML/user-page.html';
+    window.location.href = '/user-page.html';
   } else {
-    window.location.href = './HTML/account.html';
+    window.location.href = '/account.html';
   }
   console.log(data);
 } catch (error) {
