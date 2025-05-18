@@ -83,7 +83,7 @@ formData.append('music', prefs.music || '');
     console.log('Success:', data);
     container.innerHTML = '';
     uploadedFiles.length = 0;
-    window.location.href = 'category.html'; 
+    window.location.href = '/category.html'; 
   })
   .catch(error => {
     console.error('Error:', error);
