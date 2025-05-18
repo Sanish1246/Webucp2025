@@ -2,6 +2,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   const postId = sessionStorage.getItem("postIdClicked");
   if (!postId) return;
 
+
+  const themeColors = {
+    "dramatic": {
+      background: "#1a1a1a", // deep charcoal
+      border: "#7a0f0f"      // blood red
+    },
+    "classy": {
+      background: "#F3F0EB", // warm ivory
+      border: "#D8CFC2"      // soft tan/beige
+    },
+    "passive aggressive": {
+      background: "#F2F2F2", // passive grey
+      border: "#D1D5DB"      // pale gray-blue
+    },
+    "honest": {
+      background: "#FFF9E5", // honest cream
+      border: "#E0DAD2"      // light tan
+    },
+    "super cringe": {
+      background: "#ffe6fa", // pastel pink
+      border: "#ff4dd2"      // hot pink
+    },
+    "ironic": {
+      background: "#FCE7EF", // soft blush
+      border: "#F9A8D4"      // bubblegum pink
+    }
+  };
+
   try {
     const response = await fetch(`/api/post/user-page?id=${encodeURIComponent(postId)}`);
     const data = await response.json();
@@ -34,7 +62,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Add new theme class to <html>
     htmlTag.classList.add(themeClass);
 
-    // Update music (with try-catch for file errors)
+    // Apply background and border color to .color-type elements
+    const normalizedTheme = post.theme.toLowerCase();
+    const themeColor = themeColors[normalizedTheme];
+    if (themeColor) {
+      document.querySelectorAll(".color-type").forEach(el => {
+        el.style.backgroundColor = themeColor.background;
+        el.style.borderColor = themeColor.border;
+      });
+    }
+
+    // Update music
     document.querySelectorAll(".audio-type").forEach(el => el.textContent = post.music);
     const audioPlayer = document.querySelector(".audio-player");
     const audioSource = audioPlayer.querySelector("source");
@@ -49,13 +87,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     } catch (err) {
       console.error("Error loading or playing audio:", err);
-      // Optionally fallback or hide audio player here
     }
 
     // Update title
     document.querySelector(".title-type").textContent = post.title;
 
-    // Clear old content blocks
+    // Find the goodbye-card section and set data-postID
+    const goodbyeCard = document.querySelector(".goodbye-card");
+    if (goodbyeCard) {
+      goodbyeCard.setAttribute("data-postID", post._id);
+    }
+
+    // Clear old content blocks inside the container (.media-type parent’s parent)
     const container = document.querySelector(".media-type").parentElement.parentElement;
     container.innerHTML = "";
 
@@ -76,14 +119,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const ext = mediaPath.split('.').pop().toLowerCase();
 
         if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext)) {
-          // Image or GIF
           const img = document.createElement("img");
           img.src = mediaPath;
           img.alt = "Scene";
           img.className = "max-w-xs max-h-64 w-auto h-auto object-contain dynamic-media";
           div.appendChild(img);
         } else if (["mp4", "webm", "ogg"].includes(ext)) {
-          // Video
           const video = document.createElement("video");
           video.src = mediaPath;
           video.controls = true;
@@ -91,7 +132,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           video.setAttribute("playsinline", "");
           div.appendChild(video);
         } else {
-          // Unknown type fallback (link)
           const link = document.createElement("a");
           link.href = mediaPath;
           link.textContent = "View media";
@@ -108,18 +148,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-async function openLogin(event){
-    event.preventDefault();
-      try {
-  const response = await fetch('/login');
-  const data = await response.json();
-  if (data.email) {
-    window.location.href = '/user-page.html';
-  } else {
-    window.location.href = '/account.html';
+async function openLogin(event) {
+  event.preventDefault();
+  try {
+    const response = await fetch('/login');
+    const data = await response.json();
+    if (data.email) {
+      window.location.href = '/user-page.html';
+    } else {
+      window.location.href = '/account.html';
+    }
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
   }
-  console.log(data);
-} catch (error) {
-  console.error('Error:', error);
-}
 }
