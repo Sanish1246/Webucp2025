@@ -7,7 +7,12 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script type="module" src="JS/user-page.js"></script>
     <script type="module" src="JS/search-button.js"></script>
+    <link rel="stylesheet" href="/CSS/tones.css" />
     <style>
+      #heartIcon.liked {
+        transform: scale(1.1);
+      }
+
       .fade-in {
         animation: fadeIn 1.2s ease-in forwards;
       }
@@ -34,118 +39,6 @@
           transform: translateY(0);
           opacity: 1;
         }
-      }
-
-      /* ========== Dramatic Theme Styles ========== */
-      .theme-dramatic .dynamic-bg {
-        background-color: #ece2d0;
-      }
-
-      .theme-dramatic .dynamic-font-color {
-        color: #2d2b22;
-      }
-
-      .theme-dramatic .dynamic-font {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .theme-dramatic .dynamic-navbar {
-        background-color: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
-      }
-
-      .theme-dramatic .dynamic-card {
-        background-color: #faf1e9;
-        color: #2d2b22;
-      }
-
-      .theme-dramatic .dynamic-label {
-        color: #4e4b42;
-      }
-
-      .theme-dramatic .dynamic-subtext {
-        color: #4e4b42;
-      }
-
-      .theme-dramatic .dynamic-badge {
-        background-color: #faf1e9;
-        border: 1px solid #b29b7b;
-        color: #2d2b22;
-      }
-
-      .theme-dramatic .dynamic-media {
-        border: 1px solid #b29b7b;
-      }
-
-      .theme-dramatic .dynamic-footer {
-        background-color: rgba(224, 206, 177, 0.7);
-        color: #2d2b22;
-        border-top: 1px solid rgba(178, 155, 123, 0.3);
-      }
-
-      .theme-dramatic .dynamic-icon:hover {
-        color: #747d86;
-      }
-
-      .theme-dramatic .dynamic-audio {
-        display: none;
-      }
-
-      /* ========== Honest Theme Styles ========== */
-      .theme-honest .dynamic-bg {
-        background-color: #ffffff;
-      }
-
-      .theme-honest .dynamic-font-color {
-        color: #2f3e46;
-      }
-
-      .theme-honest .dynamic-font {
-        font-family: "Segoe UI", Roboto, sans-serif;
-      }
-
-      .theme-honest .dynamic-navbar {
-        background-color: rgba(255, 255, 255, 0.8);
-        border-bottom: 1px solid #d6dee2;
-        backdrop-filter: blur(6px);
-      }
-
-      .theme-honest .dynamic-card {
-        background-color: #f9fbfc;
-        color: #2f3e46;
-        border: 1px solid #e1e8eb;
-      }
-
-      .theme-honest .dynamic-label {
-        color: #5a6e73;
-      }
-
-      .theme-honest .dynamic-subtext {
-        color: #748c94;
-      }
-
-      .theme-honest .dynamic-badge {
-        background-color: #e9f1f4;
-        border: 1px solid #b0c7cd;
-        color: #2f3e46;
-      }
-
-      .theme-honest .dynamic-media {
-        border: 1px solid #d0dce0;
-      }
-
-      .theme-honest .dynamic-footer {
-        background-color: #f2f6f8;
-        color: #5a6e73;
-        border-top: 1px solid #e0e7ea;
-      }
-
-      .theme-honest .dynamic-icon:hover {
-        color: #3d5a73;
-      }
-
-      .theme-honest .dynamic-audio {
-        display: none;
       }
     </style>
   </head>
@@ -185,6 +78,13 @@
         </li>
       </ul>
     </nav>
+
+    <div class="blood-drip-container theme-dramatic">
+      <div class="drip"></div>
+      <div class="drip"></div>
+      <div class="drip"></div>
+      <div class="drip"></div>
+    </div>
 
     <!-- Main Content -->
     <main
@@ -231,6 +131,19 @@
                   Final Bow
                 </p>
               </div>
+              <!-- Like Button -->
+              <button
+                id="likeButton"
+                data-liked="false"
+                class="flex items-center space-x-1 group ml-2"
+                title="Like this page"
+              >
+                <i
+                  data-feather="heart"
+                  id="heartIcon"
+                  class="transition-colors duration-300 group-hover:text-red-400"
+                ></i>
+              </button>
             </div>
             <span
               class="text-sm px-2 py-1 rounded-full dynamic-badge theme-type"
@@ -356,6 +269,24 @@
 
     <script>
       feather.replace();
+      const likeButton = document.getElementById("likeButton");
+      const heartIcon = document.getElementById("heartIcon");
+
+      likeButton.addEventListener("click", () => {
+        const isLiked = likeButton.getAttribute("data-liked") === "true";
+        const newLikedState = !isLiked;
+
+        likeButton.setAttribute("data-liked", newLikedState);
+        heartIcon.setAttribute(
+          "stroke",
+          newLikedState ? "#DC2626" : "currentColor"
+        );
+        heartIcon.setAttribute("fill", newLikedState ? "#DC2626" : "none");
+        likeButton.setAttribute(
+          "title",
+          newLikedState ? "Dislike this page" : "Like this page"
+        );
+      });
     </script>
   </body>
 </html>

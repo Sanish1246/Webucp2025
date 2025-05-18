@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       const cardInner = document.createElement("div");
-      cardInner.className = "glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer";
+      cardInner.className = "glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer relative";
 
       const title = document.createElement("h2");
       title.className = "text-2xl font-bold";
@@ -41,7 +41,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       const music = document.createElement("p");
       music.innerHTML = `<span class="font-semibold">Audio:</span> ${post.music || "N/A"}`;
 
-      cardInner.append(title, tone, font, music);
+      const likes = document.createElement("div");
+      likes.className = "absolute bottom-2 right-4 text-sm text-gray-600";
+      likes.innerHTML = `<span class="font-semibold">❤</span> ${post.likes ?? 0}`;
+
+      cardInner.append(title, tone, font, music, likes);
       card.appendChild(cardInner);
       container.appendChild(card);
     });
