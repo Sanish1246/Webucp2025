@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const postId = sessionStorage.getItem("postIdClicked");
   if (!postId) return;
 
+  const themeColors = {
+    "dramatic": { background: "#ECE2D0", border: "#B29B7B" },
+    "classy": { background: "#A7D3F4", border: "#4B9CD3" },
+    "passive aggressive": { background: "#1C1C1E", border: "#555" },
+    "honest": { background: "#A9C9A4", border: "#6A9B70" },
+    "super cringe": { background: "#FFB087", border: "#D16C4B" },
+    "ironic": { background: "#F87171", border: "#C53030" }
+  };
+
   try {
     const response = await fetch(`/api/post/user-page?id=${encodeURIComponent(postId)}`);
     const data = await response.json();
@@ -34,7 +43,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Add new theme class to <html>
     htmlTag.classList.add(themeClass);
 
-    // Update music (with try-catch for file errors)
+    // Apply background and border color to .color-type elements
+    const normalizedTheme = post.theme.toLowerCase();
+    const themeColor = themeColors[normalizedTheme];
+    if (themeColor) {
+      document.querySelectorAll(".color-type").forEach(el => {
+        el.style.backgroundColor = themeColor.background;
+        el.style.borderColor = themeColor.border;
+      });
+    }
+
+    // Update music
     document.querySelectorAll(".audio-type").forEach(el => el.textContent = post.music);
     const audioPlayer = document.querySelector(".audio-player");
     const audioSource = audioPlayer.querySelector("source");
@@ -49,7 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     } catch (err) {
       console.error("Error loading or playing audio:", err);
-      // Optionally fallback or hide audio player here
     }
 
     // Update title
@@ -76,14 +94,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const ext = mediaPath.split('.').pop().toLowerCase();
 
         if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext)) {
-          // Image or GIF
           const img = document.createElement("img");
           img.src = mediaPath;
           img.alt = "Scene";
           img.className = "max-w-xs max-h-64 w-auto h-auto object-contain dynamic-media";
           div.appendChild(img);
         } else if (["mp4", "webm", "ogg"].includes(ext)) {
-          // Video
           const video = document.createElement("video");
           video.src = mediaPath;
           video.controls = true;
@@ -91,7 +107,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           video.setAttribute("playsinline", "");
           div.appendChild(video);
         } else {
-          // Unknown type fallback (link)
           const link = document.createElement("a");
           link.href = mediaPath;
           link.textContent = "View media";
