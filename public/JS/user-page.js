@@ -73,7 +73,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Update title
     document.querySelector(".title-type").textContent = post.title;
 
-    // Clear old content blocks
+    // Find the goodbye-card section and set data-postID
+    const goodbyeCard = document.querySelector(".goodbye-card");
+    if (goodbyeCard) {
+      goodbyeCard.setAttribute("data-postID", post._id);
+    }
+
+    // Clear old content blocks inside the container (.media-type parent’s parent)
     const container = document.querySelector(".media-type").parentElement.parentElement;
     container.innerHTML = "";
 
@@ -123,18 +129,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-async function openLogin(event){
-    event.preventDefault();
-      try {
-  const response = await fetch('/login');
-  const data = await response.json();
-  if (data.email) {
-    window.location.href = '/user-page.html';
-  } else {
-    window.location.href = '/account.html';
+async function openLogin(event) {
+  event.preventDefault();
+  try {
+    const response = await fetch('/login');
+    const data = await response.json();
+    if (data.email) {
+      window.location.href = '/user-page.html';
+    } else {
+      window.location.href = '/account.html';
+    }
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
   }
-  console.log(data);
-} catch (error) {
-  console.error('Error:', error);
-}
 }
