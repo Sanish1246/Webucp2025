@@ -1,69 +1,99 @@
-html,body{margin:0;height:100%;overflow:hidden;font-family:sans-serif;
-    background:linear-gradient(135deg,
-              #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
-              #747d86 70%, #505101 100%);
-    color:#ddd}
-
-/* ───── layout ───── */
-#leftPane{
-    position: fixed;
-  width:60vw;height:40vh;float:left;
-  display:flex;flex-direction:column;align-items:center;
-  
-}
-
-
-#podiumCanvas{
-     position: fixed;
-  width:60vw;height:60vh;float:left;
-  background:linear-gradient(135deg,
-              #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
-              #747d86 70%, #505101 100%);
-  border-radius:12px;outline:none;
-  box-shadow:0 0 18px rgba(0,0,0,.4);
-  margin-top:25rem; 
-
-}
-canvas#UI {
-  pointer-events: none;
-}
-/* trophy canvas on the right */
-#trophyCanvas{
-  width:30vw;height:100vh;
-  position:fixed;top:4vh;right:2vw;
-  background:linear-gradient(135deg,
-              #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
-              #747d86 70%, #505101 100%);
-  outline:none;
-  border-radius:12px;box-shadow:0 0 18px rgba(0,0,0,.4);
-}
-#trophyCanvas,
-#podiumCanvas {
-  background: none;      /* let the page background show through */
-  border-radius: 0;      /* no rounding */
-  box-shadow: none;      /* no shadow */
-  outline: none;         /* we already had focus:none, keep it */
-}
-
-#rankingText {
-  margin-top: 11rem;  /* push it down by 2rem */
-  color: black;
-  font-weight: bold;
-  font-size: 50px;
-  margin-right: 100px;
-}
-#rankingText {
-  margin-top: 5rem;
-  font-size: 2.5rem;
-  color: #333;
-}
-
-#rankingList {
-  margin-top: 2rem;
-  font-size: 1.25rem;
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  background: linear-gradient(135deg,
+    #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
+    #747d86 70%, #505101 100%);
   color: #222;
-  list-style-position: inside;
 }
-#rankingList li + li {
-  margin-top: .5rem;
+
+/* ───── Trophy Canvas ───── */
+#trophyCanvas {
+  position: fixed;
+  top: 4vh;
+  right: 2vw;
+  width: 30vw;
+  height: 92vh;
+  background: none;
+  border-radius: 12px;
+  box-shadow: none;
+  outline: none;
+  z-index: 1;
+}
+
+/* ───── Ranking Container ───── */
+#rankingList {
+  position: fixed;
+  top: 6vh;
+  left: 2vw;
+  width: 64vw;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow-x: auto;
+  z-index: 2;
+}
+
+/* ───── Individual Post Card ───── */
+.category-card {
+  background: #fff;
+  color: #333;
+  padding: 1rem;
+  border-radius: 10px;
+  min-width: 18rem;
+  max-width: 18rem;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.03);
+}
+
+/* ───── Post Title ───── */
+.category-card-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+}
+
+/* ───── Info Block ───── */
+.category-card-info p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+/* ───── Media Preview ───── */
+.category-card-media {
+  margin-top: 0.5rem;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ───── Responsive (optional) ───── */
+@media (max-width: 768px) {
+  #rankingList {
+    flex-direction: column;
+    width: 90vw;
+    left: 5vw;
+    top: auto;
+    bottom: 2vh;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .category-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }

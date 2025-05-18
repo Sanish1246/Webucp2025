@@ -162,4 +162,54 @@ postRoute.get('/api/post/theme/user-page', async (req, res) => {
   }
 });
 
+postRoute.put('/api/post/likes/user-page', async (req, res) => {
+  try {
+    const { id } = req.query;
+
+    if (!id) {
+      return res.status(400).json({ error: 'Missing id query parameter' });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid MongoDB ObjectId' });
+    }
+
+    const objectId = new mongoose.Types.ObjectId(id);
+
+    // Increment the 'likes' field
+    const updatedPost = await Post.findByIdAndUpdate(
+      objectId,
+      { $inc: { likes: 1 } },
+      { new: true }
+    );
+
+    if (!updatedPost) {
+      return res.status(404).json({ error: `No post found with id: ${id}` });
+    }
+
+    res.status(200).json({ post: updatedPost });
+
+  } catch (error) {
+    console.error('Error updating likes:', error);
+    res.status(500).json({ error: 'Server error while updating likes' });
+  }
+});
+
+
+postRoute.get('/api/post/likes/user-page', async (req, res) => {
+  try {
+    // Find top 3 posts sorted by likes in descending order
+    const topPosts = await Post.find()
+      .sort({ likes: -1 })  // descending order by likes
+      .limit(3);            // limit to 3 results
+
+    res.status(200).json({ posts: topPosts });
+  } catch (error) {
+    console.error('Error fetching top posts:', error);
+    res.status(500).json({ error: 'Server error while fetching top posts' });
+  }
+});
+
+
+
 export default postRoute;

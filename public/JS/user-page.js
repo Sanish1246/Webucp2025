@@ -163,3 +163,43 @@ async function openLogin(event) {
     console.error('Error:', error);
   }
 }
+
+const likeButton = document.getElementById("likeButton");
+const heartIcon = document.getElementById("heartIcon");
+
+likeButton.addEventListener("click", async () => {
+  const isLiked = likeButton.getAttribute("data-liked") === "true";
+  const newLikedState = !isLiked;
+
+  likeButton.setAttribute("data-liked", newLikedState);
+  heartIcon.setAttribute(
+    "stroke",
+    newLikedState ? "#DC2626" : "currentColor"
+  );
+  heartIcon.setAttribute("fill", newLikedState ? "#DC2626" : "none");
+  likeButton.setAttribute(
+    "title",
+    newLikedState ? "Dislike this page" : "Like this page"
+  );
+
+  // Send PUT request to increment likes only if liking (not unliking)
+  if (newLikedState) {
+    const postId = sessionStorage.getItem("postIdClicked");
+    if (!postId) return;
+
+    try {
+      const response = await fetch(`/api/post/likes/user-page?id=${encodeURIComponent(postId)}`, {
+        method: 'PUT'
+      });
+
+      if (!response.ok) {
+        console.error("Failed to like post");
+      } else {
+        const result = await response.json();
+        console.log("Post liked:", result);
+      }
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
+  }
+});

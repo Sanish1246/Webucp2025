@@ -274,24 +274,6 @@
 
     <script>
       feather.replace();
-      const likeButton = document.getElementById("likeButton");
-      const heartIcon = document.getElementById("heartIcon");
-
-      likeButton.addEventListener("click", () => {
-        const isLiked = likeButton.getAttribute("data-liked") === "true";
-        const newLikedState = !isLiked;
-
-        likeButton.setAttribute("data-liked", newLikedState);
-        heartIcon.setAttribute(
-          "stroke",
-          newLikedState ? "#DC2626" : "currentColor"
-        );
-        heartIcon.setAttribute("fill", newLikedState ? "#DC2626" : "none");
-        likeButton.setAttribute(
-          "title",
-          newLikedState ? "Dislike this page" : "Like this page"
-        );
-      });
     </script>
   </body>
 </html>

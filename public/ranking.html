@@ -1,133 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="/CSS/ranking.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-<style>
-        @layer utilities {
-        .glass {
-          background: rgba(250, 241, 233, 0.2);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-        }
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/CSS/ranking.css" />
+    <title>Hall of Fame – 2 renders</title>
 
-        .dark .glass {
-          background: rgba(50, 50, 50, 0.25);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-4px);
-          }
-        }
-
-        .float-icon {
-          animation: float 2.5s ease-in-out infinite;
-        }
-      }
-
-      .fade-in {
-        animation: fadeIn 0.4s ease-in-out;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .ripple:hover {
-        transform: scale(1.02);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-</style>
-<title>Hall of Fame – 2 renders</title>
-
-
-<script src="https://cdn.babylonjs.com/babylon.js"></script>
-
-</head>
-<body>
-  <!-- Navbar -->
-      <nav
-        class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 dark:text-[#f0e8dc]"
-      >
-<div class="text-2xl font-bold tracking-wide text-[#1a1a1a]">
-  TheEnd.page
-</div>
-      <ul class="flex space-x-6 text-lg font-medium items-center">
-        <li>
-          <a
-            href="/index.html"
-            class="float-icon hover:text-[#2D2B22] dark:hover:text-[#cfc6bc] transition"
-            title="Home"
-          >
-            <i data-feather="home" class="float-icon"></i>
-          </a>
-        </li>
-        <li>
-          <a
-            href="/ranking.html"
-            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
-            title="Hall of fame"
-          >
-            <i data-feather="hash" class="float-icon"></i>
-          </a>
-        </li>
-          <button
-            id="openSearchModal"
-            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
-            title="Search"
-          >
-            <i data-feather="search" class="float-icon"></i>
-          </button>
-        </li>
-        <li>
-          <a
-            href=""
-            onclick="openLogin(event)"
-            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
-            title="Account"
-          >
-            <i data-feather="user" class="float-icon"></i>
-          </a>
-        </li>
-        <li>
-          <a
-            href="/logout.html"
-            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
-            title="Log Out"
-          >
-            <i data-feather="log-out" class="float-icon"></i>
-          </a>
-        </li>
-        <li>
-      </ul>
-    </nav>
-
-  <div id="leftPane">
-    <div id="rankingText">🏆 Top 3 Posts 🏆</div>
-    <ol id="rankingList"></ol>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  </head>
+  <body>
+    <div id="leftPane">
+      <div id="rankingText">🏆 Top 3 Posts 🏆</div>
+      <ol id="rankingList"></ol>
     </div>
 
-  <canvas id="trophyCanvas" tabindex="0"></canvas>
+    <canvas id="trophyCanvas" tabindex="0"></canvas>
 
-<script src="/JS/ranking.js"></script>
-<script>
-  feather.replace();
-</script>
-</body>
+    <script src="/JS/ranking.js"></script>
+  </body>
 </html>
