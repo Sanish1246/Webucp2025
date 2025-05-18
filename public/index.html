@@ -246,11 +246,19 @@
       // Initialize Feather Icons
       feather.replace();
 
-      // Dark Mode Toggle
-      document.getElementById("toggleDark").addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-        setTimeout(() => feather.replace(), 10);
-      });
+        const savedTheme = sessionStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else if (savedTheme === "light") {
+    document.documentElement.classList.remove("dark");
+  }
+
+  // Toggle Dark Mode
+  document.getElementById("toggleDark").addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    sessionStorage.setItem("theme", isDark ? "dark" : "light");
+    setTimeout(() => feather.replace(), 10); // Re-render icons
+  });
     </script>
     <script src="./JS/index.js"></script>
   </body>
