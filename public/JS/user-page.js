@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const postId = sessionStorage.getItem("postIdClicked");
+  // First try getting postId from URL query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  let postId = urlParams.get("id");
+
+  // Fallback to sessionStorage if not found in URL
+  if (!postId) {
+    postId = sessionStorage.getItem("postIdClicked");
+  }
+
+  // If postId is still missing, stop here
   if (!postId) return;
 
   const themeColors = {
@@ -19,6 +28,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const post = data.post;
     if (!post) return;
 
+    // Update the browser URL to include postId if it wasn't originally there
+    if (!urlParams.get("id")) {
+      const currentUrl = new URL(window.location);
+      currentUrl.searchParams.set("id", postId);
+      window.history.replaceState({}, '', currentUrl);
+    }
+
     // Update username
     document.querySelectorAll(".username").forEach(el => el.textContent = post.username);
 
@@ -29,21 +45,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Update theme text
     document.querySelectorAll(".theme-type").forEach(el => el.textContent = post.theme);
 
-    // Normalize theme text to class format: lowercase, spaces to dash
+    // Normalize theme to class format: lowercase, spaces to dash
     const themeClass = `theme-${post.theme.toLowerCase().replace(/\s+/g, '-')}`;
 
-    // Remove existing theme-* classes from <html>
+    // Remove any existing theme-* class on <html>
     const htmlTag = document.documentElement;
     htmlTag.classList.forEach(cls => {
-      if (cls.startsWith("theme-")) {
-        htmlTag.classList.remove(cls);
-      }
+      if (cls.startsWith("theme-")) htmlTag.classList.remove(cls);
     });
-
-    // Add new theme class to <html>
     htmlTag.classList.add(themeClass);
 
-    // Apply background and border color to .color-type elements
+    // Apply background/border color to .color-type elements
     const normalizedTheme = post.theme.toLowerCase();
     const themeColor = themeColors[normalizedTheme];
     if (themeColor) {
@@ -73,17 +85,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Update title
     document.querySelector(".title-type").textContent = post.title;
 
-    // Find the goodbye-card section and set data-postID
+    // Set post ID on goodbye card
     const goodbyeCard = document.querySelector(".goodbye-card");
     if (goodbyeCard) {
       goodbyeCard.setAttribute("data-postID", post._id);
     }
 
-    // Clear old content blocks inside the container (.media-type parent’s parent)
+    // Clear old media/message blocks
     const container = document.querySelector(".media-type").parentElement.parentElement;
     container.innerHTML = "";
 
-    // Insert messages and media blocks dynamically
+    // Render dynamic message/media content
     post.content.forEach(block => {
       if (block.message) {
         const p = document.createElement("p");
@@ -153,19 +165,13 @@ likeButton.addEventListener("click", async () => {
   const newLikedState = !isLiked;
 
   likeButton.setAttribute("data-liked", newLikedState);
-  heartIcon.setAttribute(
-    "stroke",
-    newLikedState ? "#DC2626" : "currentColor"
-  );
+  heartIcon.setAttribute("stroke", newLikedState ? "#DC2626" : "currentColor");
   heartIcon.setAttribute("fill", newLikedState ? "#DC2626" : "none");
-  likeButton.setAttribute(
-    "title",
-    newLikedState ? "Dislike this page" : "Like this page"
-  );
+  likeButton.setAttribute("title", newLikedState ? "Dislike this page" : "Like this page");
 
-  // Send PUT request to increment likes only if liking (not unliking)
   if (newLikedState) {
-    const postId = sessionStorage.getItem("postIdClicked");
+    const urlParams = new URLSearchParams(window.location.search);
+    let postId = urlParams.get("id") || sessionStorage.getItem("postIdClicked");
     if (!postId) return;
 
     try {
