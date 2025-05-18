@@ -1,0 +1,502 @@
+    /* ========== DRAMATIC BLOOD THEME ========== */
+
+    .theme-dramatic .dynamic-bg {
+    background: linear-gradient(to bottom right, #000000, #1a1a1a, #330000);
+    color: #f2f2f2;
+    }
+
+    .theme-dramatic .dynamic-font {
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .theme-dramatic .dynamic-font-color {
+    color: #f2f2f2;
+    }
+
+    .theme-dramatic .dynamic-navbar {
+    background-color: rgba(26, 26, 26, 0.6);
+    border-bottom: 1px solid #7a0f0f;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .theme-dramatic .dynamic-card {
+    background-color: rgba(26, 26, 26, 0.8);
+    color: #f2f2f2;
+    border: 1px solid #7a0f0f;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .theme-dramatic .dynamic-label,
+    .theme-dramatic .dynamic-subtext {
+    color: #e0d7d7;
+    }
+
+    .theme-dramatic .dynamic-badge {
+    background-color: rgba(122, 15, 15, 0.4);
+    color: #f2f2f2;
+    border: 1px solid #e11d48;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    }
+
+    .theme-dramatic .dynamic-media {
+    border: 1px solid #7a0f0f;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    }
+
+    .theme-dramatic .dynamic-footer {
+    background-color: rgba(17, 17, 17, 0.7);
+    color: #bbb;
+    border-top: 1px solid rgba(122, 15, 15, 0.5);
+    }
+
+    .theme-dramatic .dynamic-icon:hover {
+    color: #ff1a1a;
+    }
+
+    /* Add dramatic flair to text elements */
+    .theme-dramatic .dynamic-text-accent {
+    color: #f43f5e;
+    font-style: italic;
+    font-weight: bold;
+    }
+
+    /* Dramatic fade-in and slide-up animations */
+    .theme-dramatic .fade-in {
+    animation: fadeIn 1.2s ease-in forwards;
+    }
+
+    .theme-dramatic .slide-up {
+    animation: slideUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Blood Drip Animation */
+    .theme-dramatic .blood-drip-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    z-index: 50;
+    }
+
+    .theme-dramatic .drip {
+    position: absolute;
+    width: 6px;
+    height: 20px;
+    background: #7a0f0f;
+    border-radius: 50%;
+    top: 0;
+    animation: drip 2.5s infinite ease-in-out;
+    z-index: 50;
+    }
+
+    .theme-dramatic .drip:nth-child(1) { left: 20%; animation-delay: 0s; }
+    .theme-dramatic .drip:nth-child(2) { left: 40%; animation-delay: 0.8s; }
+    .theme-dramatic .drip:nth-child(3) { left: 60%; animation-delay: 1.5s; }
+    .theme-dramatic .drip:nth-child(4) { left: 80%; animation-delay: 2.2s; }
+
+    @keyframes drip {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    80% { transform: translateY(20px); opacity: 0.8; }
+    100% { transform: translateY(60px); opacity: 0; }
+    }
+
+    .blood-drip-container {
+    display: none;
+    }
+
+    .theme-dramatic .blood-drip-container {
+    display: block;
+    }
+
+    /* ========== Honest Theme Styles ========== */
+    .theme-honest .dynamic-bg {
+    background-color: #FFF9E5; /* Matches the body background */
+    }
+
+    .theme-honest .dynamic-font-color {
+    color: #2C2C2C; /* Primary text color */
+    }
+
+    .theme-honest .dynamic-font {
+    font-family: "Inter", sans-serif; /* Matches HTML font */
+    }
+
+    .theme-honest .dynamic-navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid #DDD;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .theme-honest .dynamic-card {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    border: 1px solid #E0DAD2;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .theme-honest .dynamic-label {
+    color: #457B9D; /* Soft blue for section headers */
+    font-weight: 600;
+    }
+
+    .theme-honest .dynamic-subtext {
+    color: #6BAEDC; /* Accent subtext used under username */
+    font-style: italic;
+    }
+
+    .theme-honest .dynamic-badge {
+    background-color: #FFFAE3; /* Light yellow badge bg */
+    border: 1px solid #FFCD4B;  /* Golden yellow border */
+    color: #B78600;             /* Warm yellow text */
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    }
+
+    .theme-honest .dynamic-media {
+    border: 1px solid #DDD;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    }
+
+    .theme-honest .dynamic-footer {
+    background-color: #EDF3F8;
+    color: #457B9D;
+    border-top: 1px solid #C3DFF0;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 1rem;
+    }
+
+    .theme-honest .dynamic-icon:hover {
+    color: #FFCD4B; /* Icon hover effect consistent with HTML */
+    transition: color 0.2s ease;
+    }
+
+    .theme-honest .dynamic-audio {
+    display: none; /* Audio is autoplay + hidden */
+    }
+
+    /* ========== Irony Theme Styles ========== */
+    .theme-ironic .dynamic-bg {
+    background-color: #FCE7EF; /* Soft pink background */
+    }
+
+    .theme-ironic .dynamic-font-color {
+    color: #4B0000; /* Dark wine red – serious yet dramatic */
+    }
+
+    .theme-ironic .dynamic-font {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    }
+
+    .theme-ironic .dynamic-navbar {
+    background-color: rgba(249, 213, 217, 0.8); /* pink-200/80 */
+    border-bottom: 1px solid rgba(249, 168, 212, 0.6); /* pink-300/60 */
+    backdrop-filter: blur(6px);
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 4px 8px rgba(255, 0, 100, 0.1);
+    }
+
+    .theme-ironic .dynamic-card {
+    background-color: white;
+    color: #4B0000;
+    border: 2px dashed #F9A8D4;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(255, 100, 150, 0.1);
+    font-style: italic;
+    }
+
+    .theme-ironic .dynamic-label {
+    color: #DC2626; /* Bold red accent */
+    font-weight: bold;
+    font-style: italic;
+    }
+
+    .theme-ironic .dynamic-subtext {
+    color: #6B7280; /* gray-600 */
+    font-style: italic;
+    font-weight: bold;
+    }
+
+    .theme-ironic .dynamic-badge {
+    background-color: #FCE7EF;
+    border: 1px solid #F9A8D4;
+    color: #9B1C36; /* Deep pink/red */
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    border-radius: 9999px;
+    }
+
+    .theme-ironic .dynamic-media {
+    border: 2px dashed #F9A8D4;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    }
+
+    .theme-ironic .dynamic-footer {
+    background-color: rgba(249, 213, 217, 0.8); /* pink-200/80 */
+    color: #DC2626;
+    border-top: 1px solid #F9A8D4;
+    font-style: normal;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 1rem;
+    }
+
+    .theme-ironic .dynamic-icon:hover {
+    color: #F87171; /* Lighter pink-red hover */
+    transition: color 0.2s ease-in-out;
+    }
+
+    .theme-ironic .dynamic-audio {
+    display: none;
+    }
+
+
+    /* ========== Classy Theme Styles ========== */
+    .theme-classy .dynamic-bg {
+    background-color: #F3F0EB; /* ivory warm gray */
+    }
+
+    .theme-classy .dynamic-font {
+    font-family: 'Georgia', serif;
+    font-weight: 400;
+    color: #2E2A26;
+    }
+
+    .theme-classy .dynamic-navbar {
+    background-color: rgba(250, 249, 246, 0.8);
+    border-bottom: 1px solid #D8CFC2;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 6px rgba(120, 100, 90, 0.08);
+    }
+
+    .theme-classy .dynamic-label {
+    color: #3B3732;
+    font-weight: 600;
+    }
+
+    .theme-classy .dynamic-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D8CFC2;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(120, 100, 90, 0.05);
+    color: #3B3732;
+    }
+
+    .theme-classy .dynamic-text {
+    color: #3B3732;
+    font-style: italic;
+    }
+
+    .theme-classy .dynamic-subtext {
+    color: #A88E63;
+    font-style: italic;
+    }
+
+    .theme-classy .dynamic-badge {
+    background-color: #F3F0EB;
+    border: 1px solid #C5B8A3;
+    color: #5A5245;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 9999px;
+    }
+
+    .theme-classy .dynamic-media {
+    border: 1px solid #D8CFC2;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    }
+
+    .theme-classy .dynamic-footer {
+    background-color: #F3F0EB;
+    border-top: 1px solid #D8CFC2;
+    color: #5A5245;
+    text-align: center;
+    font-size: 0.875rem;
+    padding: 1rem;
+    }
+
+    .theme-classy .dynamic-icon:hover {
+    color: #A88E63;
+    transition: color 0.2s ease-in-out;
+    }
+
+
+    /* ========== Passive Aggressive Theme Styles ========== */
+    .theme-passive-aggressive .dynamic-bg {
+    background-color: #F2F2F2;
+    }
+
+    .theme-passive-aggressive .dynamic-font {
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #3B3B3B;
+    font-weight: 400;
+    }
+
+    .theme-passive-aggressive .dynamic-navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid #E5E7EB; /* gray-200 */
+    box-shadow: 0 2px 4px rgba(100, 100, 100, 0.06);
+    }
+
+    .theme-passive-aggressive .dynamic-label {
+    color: #6B7280; /* gray-500 */
+    font-weight: 600;
+    }
+
+    .theme-passive-aggressive .dynamic-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D5DB; /* gray-300 */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(90, 90, 90, 0.05);
+    color: #3B3B3B;
+    }
+
+    .theme-passive-aggressive .dynamic-text {
+    color: #4B5563; /* gray-700 */
+    font-style: italic;
+    font-size: 0.875rem;
+    }
+
+    .theme-passive-aggressive .dynamic-subtext {
+    color: #9CA3AF; /* gray-400 */
+    font-size: 0.75rem;
+    font-style: italic;
+    }
+
+    .theme-passive-aggressive .dynamic-badge {
+    background-color: #F9FAFB;
+    border: 1px solid #D1D5DB;
+    color: #6B7280;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    }
+
+    .theme-passive-aggressive .dynamic-media {
+    border: 1px solid #D1D5DB;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    }
+
+    .theme-passive-aggressive .dynamic-footer {
+    background-color: #F2F2F2;
+    color: #6B7280;
+    font-size: 0.75rem;
+    border-top: 1px solid #D1D5DB;
+    text-align: center;
+    padding: 1rem;
+    }
+
+    .theme-passive-aggressive .dynamic-icon:hover {
+    color: #111827; /* gray-900 */
+    transition: color 0.2s ease-in-out;
+    }
+    
+
+    /* ========== Super Cringe Theme Styles ========== */
+    .theme-super-cringe .dynamic-bg {
+    background: linear-gradient(135deg, #ffe6fa, #e0bbff);
+    }
+
+    .theme-super-cringe .dynamic-font {
+    font-family: 'Comic Neue', 'Indie Flower', cursive;
+    color: #3a003a;
+    font-weight: 600;
+    }
+
+    .theme-super-cringe .dynamic-navbar {
+    background-color: rgba(255, 192, 203, 0.6);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid #ff4dd2;
+    box-shadow: 0 5px 12px rgba(255, 105, 180, 0.4);
+    border-radius: 0 0 1.5rem 1.5rem;
+    }
+
+    .theme-super-cringe .dynamic-label {
+    color: #ff4dd2;
+    font-weight: bold;
+    text-shadow: 0 0 4px #ffb6c1;
+    }
+
+    .theme-super-cringe .dynamic-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px dashed #ffb6c1;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 15px #ffc0cb;
+    padding: 1.5rem;
+    color: #4b006e;
+    }
+
+    .theme-super-cringe .dynamic-text {
+    color: #62005c;
+    font-style: italic;
+    font-size: 1rem;
+    text-shadow: 1px 1px 5px #ff00f2;
+    }
+
+    .theme-super-cringe .dynamic-subtext {
+    color: #ff69b4;
+    font-size: 0.8rem;
+    font-style: italic;
+    }
+
+    .theme-super-cringe .dynamic-badge {
+    background-color: #ffe6fa;
+    border: 1px dashed #ff85ff;
+    color: #ff4dd2;
+    font-family: monospace;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 6px #ffc0cb;
+    }
+
+    .theme-super-cringe .dynamic-media {
+    border: 4px double #ffb6c1;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 12px #ffc8dd;
+    }
+
+    .theme-super-cringe .dynamic-footer {
+    background-color: rgba(255, 192, 203, 0.9);
+    color: #c71585;
+    font-size: 0.875rem;
+    border-top: 1px dashed #ff69b4;
+    text-align: center;
+    padding: 1rem;
+    font-family: monospace;
+    }
+
+    .theme-super-cringe .dynamic-icon:hover {
+    color: #ff1493;
+    transform: rotate(10deg);
+    transition: all 0.2s ease-in-out;
+    }
+
+    
