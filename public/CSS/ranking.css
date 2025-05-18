@@ -1,95 +1,137 @@
-html, body {
+/* Reset & Global Styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
   height: 100%;
-  overflow: hidden;
-  font-family: sans-serif;
-  background: linear-gradient(135deg,
-    #faf1e9 0%, #e0ceb1 20%, #b29b7b 45%,
-    #747d86 70%, #505101 100%);
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #FAF1E9, #E0CEB1);
   color: #222;
+  overflow: hidden;
 }
 
-/* ───── Trophy Canvas ───── */
-#trophyCanvas {
-  position: fixed;
-  top: 4vh;
-  right: 2vw;
-  width: 30vw;
-  height: 92vh;
-  background: none;
-  border-radius: 12px;
-  box-shadow: none;
-  outline: none;
-  z-index: 1;
-}
-
-/* ───── Ranking Container ───── */
-#rankingList {
-  position: fixed;
-  top: 6vh;
-  left: 2vw;
-  width: 64vw;
+/* Container Layout */
+.container {
   display: flex;
   flex-direction: row;
-  gap: 1.5rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  overflow-x: auto;
-  z-index: 2;
+  height: 100vh;
+  padding: 2vh 2vw;
+  gap: 2vw;
 }
 
-/* ───── Individual Post Card ───── */
-.category-card {
-  background: #fff;
-  color: #333;
+/* Trophy Section */
+.trophy-showcase {
+  flex: 0 0 35%;
+  background: rgba(178, 155, 123, 0.15); /* #B29B7B */
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(80, 81, 1, 0.25); /* #505101 */
   padding: 1rem;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#trophyCanvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  outline: none;
+}
+
+/* Ranking Section */
+.ranking {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ranking-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #505101; /* Accent Title */
+  padding: 0.75rem 1.5rem;
+  background: rgba(224, 206, 177, 0.3); /* #E0CEB1 */
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(80, 81, 1, 0.15);
+}
+
+/* Ranking List */
+.ranking-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+/* Post Card */
+.category-card {
+  background: linear-gradient(135deg, #FAF1E9cc, #E0CEB1cc);
+  border: 1px solid #B29B7B;
+  border-radius: 16px;
+  padding: 1rem;
   min-width: 18rem;
   max-width: 18rem;
   flex: 0 0 auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
+  box-shadow: 0 6px 20px rgba(116, 125, 134, 0.2); /* #747D86 */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .category-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(116, 125, 134, 0.35); /* hover pop */
 }
 
-/* ───── Post Title ───── */
 .category-card-title {
-  margin: 0 0 0.5rem;
   font-size: 1.2rem;
-  font-weight: bold;
-  color: #222;
+  font-weight: 600;
+  color: #505101;
+  margin-bottom: 0.5rem;
 }
 
-/* ───── Info Block ───── */
 .category-card-info p {
-  margin: 0.25rem 0;
   font-size: 0.95rem;
+  color: #3d3d3d;
+  margin: 0.25rem 0;
 }
 
-/* ───── Media Preview ───── */
 .category-card-media {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(178, 155, 123, 0.3); /* soft card glow */
 }
 
-/* ───── Responsive (optional) ───── */
-@media (max-width: 768px) {
-  #rankingList {
+/* Scroll Styling */
+.ranking-list::-webkit-scrollbar {
+  height: 10px;
+}
+.ranking-list::-webkit-scrollbar-thumb {
+  background: #B29B7B;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .container {
     flex-direction: column;
-    width: 90vw;
-    left: 5vw;
-    top: auto;
-    bottom: 2vh;
-    height: auto;
-    overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  .trophy-showcase {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .ranking-list {
+    flex-direction: column;
+    overflow-x: hidden;
   }
 
   .category-card {
