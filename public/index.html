@@ -67,6 +67,14 @@
           </a>
         </li>
         <li>
+          <a
+            href="/ranking.html"
+            class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
+            title="Hall of fame"
+          >
+            <i data-feather="hash" class="float-icon"></i>
+          </a>
+        </li>
           <button
             id="openSearchModal"
             class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
@@ -77,7 +85,8 @@
         </li>
         <li>
           <a
-            href="/account.html"
+            href=""
+            onclick="openLogin(event)"
             class="hover:text-[#747D86] dark:hover:text-[#cfc6bc] transition"
             title="Account"
           >
@@ -127,7 +136,8 @@
         that tells your side of the story — in your own style.
       </p>
       <a
-        href="/account.html"
+        href=""
+        onclick="openCreate(event)"
         class="bg-[#2D2B22] text-[#FAF1E9] dark:bg-[#FAF1E9] dark:text-[#2D2B22] px-8 py-3 rounded-xl text-lg hover:bg-[#505101] dark:hover:bg-[#d6d6d6] transition shadow-md float-icon"
       >
         Craft Your Exit →
@@ -241,23 +251,7 @@
         document.documentElement.classList.toggle("dark");
         setTimeout(() => feather.replace(), 10);
       });
-
-      // Modal Handling
-      const openBtn = document.getElementById("openSearchModal");
-      const closeBtn = document.getElementById("closeSearchModal");
-      const modal = document.getElementById("searchModal");
-      const form = document.getElementById("searchForm");
-
-      openBtn.addEventListener("click", () => modal.classList.remove("hidden"));
-      closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const category = form.category.value;
-        window.location.href = `/search.html?category=${encodeURIComponent(
-          category
-        )}`;
-      });
     </script>
+    <script src="./JS/index.js"></script>
   </body>
 </html>
