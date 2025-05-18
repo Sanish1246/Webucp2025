@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const themeColors = {
     "dramatic": {
-      background: "#1a1a1a", // deep charcoal
-      border: "#7a0f0f"      // blood red
+      background: "#7a0f0f", // blood red 
+      border: "#1a1a1a"      // deep charcoal
     },
     "classy": {
       background: "#F3F0EB", // warm ivory
