@@ -197,37 +197,42 @@
     <script src="/JS/create.js"></script>
     <script>
       const DARK_CSS = `
-  /* ---- global dark palette ---- */
-  body{ background:#131313; color:#e6e6e6; }
+    body { background: #131313; color: #e6e6e6; }
+    .card {
+      background:
+        linear-gradient(#0005,#0005),
+        var(--img,none) center/100% 100% no-repeat,
+        rgba(255,255,255,.08);
+    }
+    #title { color: #ffffff; }
+  `;
 
-  /* ---- card tweaks ---- */
-  .card{
-    background:
-      linear-gradient(#0005,#0005),
-      var(--img,none) center/100% 100% no-repeat,
-      rgba(255,255,255,.08);
-  }
+  let darkOn = false;
+  let darkTag;
 
-  /* ---- make all “title” headings pure white ---- */
-  #title{ color:#ffffff; }
-  /* …or, if your titles are just h1/h2 elements:
-     h1,h2{ color:#ffffff; }                         */
+  // Applica il tema scuro se salvato in sessionStorage
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = sessionStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      darkTag = document.createElement("style");
+      darkTag.textContent = DARK_CSS;
+      document.head.appendChild(darkTag);
+      darkOn = true;
+    }
+  });
 
-`;
-
-      let darkOn = false;
-      let darkTag;
-
-      document.getElementById("themeToggle").addEventListener("click", () => {
-        if (!darkOn) {
-          darkTag = document.createElement("style");
-          darkTag.textContent = DARK_CSS;
-          document.head.appendChild(darkTag);
-        } else {
-          darkTag.remove();
-        }
-        darkOn = !darkOn;
-      });
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    if (!darkOn) {
+      darkTag = document.createElement("style");
+      darkTag.textContent = DARK_CSS;
+      document.head.appendChild(darkTag);
+      sessionStorage.setItem("theme", "dark");
+    } else {
+      darkTag.remove();
+      sessionStorage.setItem("theme", "light");
+    }
+    darkOn = !darkOn;
+  });
     </script>
   </body>
 </html>

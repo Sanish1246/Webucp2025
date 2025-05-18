@@ -111,7 +111,7 @@ modal.addEventListener('submit', e => {
   // Save preferences to sessionStorage as JSON string
   sessionStorage.setItem('userPreferences', JSON.stringify(data));
 
-  // Redirect to category.html
+  // Redirect to message.html
   window.location.href = 'message.html';
 });
 
