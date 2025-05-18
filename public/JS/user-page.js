@@ -2,13 +2,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   const postId = sessionStorage.getItem("postIdClicked");
   if (!postId) return;
 
+
   const themeColors = {
-    "dramatic": { background: "#ECE2D0", border: "#B29B7B" },
-    "classy": { background: "#A7D3F4", border: "#4B9CD3" },
-    "passive aggressive": { background: "#1C1C1E", border: "#555" },
-    "honest": { background: "#A9C9A4", border: "#6A9B70" },
-    "super cringe": { background: "#FFB087", border: "#D16C4B" },
-    "ironic": { background: "#F87171", border: "#C53030" }
+    "dramatic": {
+      background: "#1a1a1a", // deep charcoal
+      border: "#7a0f0f"      // blood red
+    },
+    "classy": {
+      background: "#F3F0EB", // warm ivory
+      border: "#D8CFC2"      // soft tan/beige
+    },
+    "passive aggressive": {
+      background: "#F2F2F2", // passive grey
+      border: "#D1D5DB"      // pale gray-blue
+    },
+    "honest": {
+      background: "#FFF9E5", // honest cream
+      border: "#E0DAD2"      // light tan
+    },
+    "super cringe": {
+      background: "#ffe6fa", // pastel pink
+      border: "#ff4dd2"      // hot pink
+    },
+    "ironic": {
+      background: "#FCE7EF", // soft blush
+      border: "#F9A8D4"      // bubblegum pink
+    }
   };
 
   try {
