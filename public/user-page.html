@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-dramatic">
   <head>
     <meta charset="UTF-8" />
     <title>Exit Stage Left – TheEnd.page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <script type="module" src="JS/user-page.js"></script>
     <style>
       .fade-in {
         animation: fadeIn 1.2s ease-in forwards;
@@ -33,49 +34,148 @@
           opacity: 1;
         }
       }
+
+      /* ========== Dramatic Theme Styles ========== */
+      .theme-dramatic .dynamic-bg {
+        background-color: #ece2d0;
+      }
+
+      .theme-dramatic .dynamic-font-color {
+        color: #2d2b22;
+      }
+
+      .theme-dramatic .dynamic-font {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .theme-dramatic .dynamic-navbar {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+      }
+
+      .theme-dramatic .dynamic-card {
+        background-color: #faf1e9;
+        color: #2d2b22;
+      }
+
+      .theme-dramatic .dynamic-label {
+        color: #4e4b42;
+      }
+
+      .theme-dramatic .dynamic-subtext {
+        color: #4e4b42;
+      }
+
+      .theme-dramatic .dynamic-badge {
+        background-color: #faf1e9;
+        border: 1px solid #b29b7b;
+        color: #2d2b22;
+      }
+
+      .theme-dramatic .dynamic-media {
+        border: 1px solid #b29b7b;
+      }
+
+      .theme-dramatic .dynamic-footer {
+        background-color: rgba(224, 206, 177, 0.7);
+        color: #2d2b22;
+        border-top: 1px solid rgba(178, 155, 123, 0.3);
+      }
+
+      .theme-dramatic .dynamic-icon:hover {
+        color: #747d86;
+      }
+
+      .theme-dramatic .dynamic-audio {
+        display: none;
+      }
+
+      /* ========== Honest Theme Styles ========== */
+      .theme-honest .dynamic-bg {
+        background-color: #ffffff;
+      }
+
+      .theme-honest .dynamic-font-color {
+        color: #2f3e46;
+      }
+
+      .theme-honest .dynamic-font {
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      .theme-honest .dynamic-navbar {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid #d6dee2;
+        backdrop-filter: blur(6px);
+      }
+
+      .theme-honest .dynamic-card {
+        background-color: #f9fbfc;
+        color: #2f3e46;
+        border: 1px solid #e1e8eb;
+      }
+
+      .theme-honest .dynamic-label {
+        color: #5a6e73;
+      }
+
+      .theme-honest .dynamic-subtext {
+        color: #748c94;
+      }
+
+      .theme-honest .dynamic-badge {
+        background-color: #e9f1f4;
+        border: 1px solid #b0c7cd;
+        color: #2f3e46;
+      }
+
+      .theme-honest .dynamic-media {
+        border: 1px solid #d0dce0;
+      }
+
+      .theme-honest .dynamic-footer {
+        background-color: #f2f6f8;
+        color: #5a6e73;
+        border-top: 1px solid #e0e7ea;
+      }
+
+      .theme-honest .dynamic-icon:hover {
+        color: #3d5a73;
+      }
+
+      .theme-honest .dynamic-audio {
+        display: none;
+      }
     </style>
   </head>
 
   <body
-    class="min-h-screen bg-[#ECE2D0] text-[#2D2B22] flex flex-col fade-in dynamic-bg dynamic-font-color"
-    style="font-family: Arial, Helvetica, sans-serif"
+    class="min-h-screen text-[#2D2B22] flex flex-col fade-in dynamic-bg dynamic-font-color dynamic-font"
   >
     <!-- Navbar -->
     <nav
-      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 backdrop-blur-md bg-white/50 slide-up dynamic-navbar"
+      class="glass fixed top-0 left-0 right-0 z-10 py-6 px-8 flex justify-between items-center shadow-lg rounded-b-xl mx-auto max-w-7xl mt-2 slide-up dynamic-navbar"
     >
       <div class="text-2xl tracking-wide dynamic-font">TheEnd.page</div>
       <ul class="flex space-x-6 text-lg items-center">
         <li>
           <a href="/public/home.html" title="Home"
-            ><i
-              data-feather="home"
-              class="hover:text-[#747D86] dynamic-icon"
-            ></i
+            ><i data-feather="home" class="dynamic-icon"></i
           ></a>
         </li>
         <li>
           <a href="/search.html" title="Search"
-            ><i
-              data-feather="search"
-              class="hover:text-[#747D86] dynamic-icon"
-            ></i
+            ><i data-feather="search" class="dynamic-icon"></i
           ></a>
         </li>
         <li>
           <a href="/public/account.html" title="Account"
-            ><i
-              data-feather="user"
-              class="hover:text-[#747D86] dynamic-icon"
-            ></i
+            ><i data-feather="user" class="dynamic-icon"></i
           ></a>
         </li>
         <li>
           <a href="/logout.html" title="Log Out"
-            ><i
-              data-feather="log-out"
-              class="hover:text-[#747D86] dynamic-icon"
-            ></i
+            ><i data-feather="log-out" class="dynamic-icon"></i
           ></a>
         </li>
       </ul>
@@ -87,32 +187,30 @@
     >
       <!-- Theme Metadata -->
       <section
-        class="bg-[#FAF1E9] p-4 rounded-xl shadow-md text-sm grid grid-cols-2 sm:grid-cols-4 gap-4 dynamic-card"
+        class="p-4 rounded-xl shadow-md text-sm grid grid-cols-2 sm:grid-cols-4 gap-4 dynamic-card"
       >
         <div>
-          <p class="font-semibold text-[#4E4B42] dynamic-label">Font</p>
-          <p class="text-[#2D2B22] dynamic-font">Arial</p>
+          <p class="font-semibold dynamic-label">Font</p>
+          <p class="dynamic-font font-type">Arial</p>
         </div>
         <div>
-          <p class="font-semibold text-[#4E4B42] dynamic-label">Color Tone</p>
+          <p class="font-semibold dynamic-label">Color Tone</p>
           <div
-            class="mt-1 w-6 h-6 rounded-full border border-[#B29B7B] shadow-inner bg-[#ECE2D0] dynamic-color"
+            class="mt-1 w-6 h-6 rounded-full border border-[#B29B7B] shadow-inner bg-[#ECE2D0] color-type"
           ></div>
         </div>
         <div>
-          <p class="font-semibold text-[#4E4B42] dynamic-label">Audio</p>
-          <p class="dynamic-font">Sad Violin 🎻</p>
+          <p class="font-semibold dynamic-label">Audio</p>
+          <p class="dynamic-font audio-type">Sad Violin 🎻</p>
         </div>
         <div>
-          <p class="font-semibold text-[#4E4B42] dynamic-label">Theme</p>
-          <p class="dynamic-font">Dramatic</p>
+          <p class="font-semibold dynamic-label">Theme</p>
+          <p class="dynamic-font theme-type">Dramatic</p>
         </div>
       </section>
 
       <!-- Goodbye Card -->
-      <section
-        class="bg-white/90 p-6 rounded-xl shadow-xl slide-up dynamic-card"
-      >
+      <section class="p-6 rounded-xl shadow-xl slide-up dynamic-card">
         <div class="max-h-[350px] overflow-y-auto pr-2 space-y-4 fade-in">
           <!-- Header -->
           <div class="flex items-center justify-between">
@@ -120,22 +218,19 @@
               <img
                 src="uploads/default_profile.png"
                 alt="User Avatar"
-                class="w-10 h-10 rounded-full shadow object-cover dynamic-avatar"
+                class="w-10 h-10 rounded-full shadow object-cover"
               />
               <div>
                 <p class="text-base dynamic-font">User123</p>
-                <p
-                  class="text-sm text-gray-600 italic font-bold dynamic-subtext"
-                >
+                <p class="text-sm italic font-bold dynamic-subtext title-type">
                   Final Bow
                 </p>
               </div>
             </div>
             <span
-              class="text-sm px-2 py-1 bg-[#FAF1E9] rounded-full border border-[#B29B7B] dynamic-badge"
+              class="text-sm px-2 py-1 rounded-full dynamic-badge theme-type"
+              >Dramatic</span
             >
-              Dramatic
-            </span>
           </div>
 
           <!-- Interleaved Content Blocks -->
@@ -143,7 +238,7 @@
             <!-- Message -->
             <div>
               <p
-                class="text-lg leading-relaxed text-[#2D2B22] italic dynamic-font"
+                class="text-lg leading-relaxed italic dynamic-font message-type"
               >
                 This is my final bow. The curtain falls not with regret, but
                 with gratitude. 💔🎭
@@ -152,7 +247,7 @@
 
             <!-- Media -->
             <div>
-              <div class="rounded-lg overflow-hidden">
+              <div class="rounded-lg overflow-hidden media-type">
                 <img
                   src="uploads/default_profile.png"
                   alt="Scene"
@@ -164,7 +259,7 @@
             <!-- Message -->
             <div>
               <p
-                class="text-lg leading-relaxed text-[#2D2B22] italic dynamic-font"
+                class="text-lg leading-relaxed italic dynamic-font message-type"
               >
                 Every ending is just a new beginning, wrapped in a whisper of
                 silence.
@@ -173,7 +268,7 @@
 
             <!-- Media -->
             <div>
-              <div class="rounded-lg overflow-hidden">
+              <div class="rounded-lg overflow-hidden media-type">
                 <img
                   src="uploads/default_profile.png"
                   alt="Scene"
@@ -187,15 +282,13 @@
     </main>
 
     <!-- Hidden Audio Autoplay -->
-    <audio autoplay hidden class="dynamic-audio">
+    <audio autoplay hidden class="dynamic-audio audio-player">
       <source src="" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
 
     <!-- Footer -->
-    <footer
-      class="not-italic font-normal bg-[#E0CEB1]/70 text-center p-4 text-[#2D2B22] border-t border-[#B29B7B]/30 slide-up dynamic-footer"
-    >
+    <footer class="text-center p-4 border-t slide-up dynamic-footer">
       © 2025 <span class="font-semibold dynamic-font">TheEnd.page</span>. Write
       it your way.
     </footer>

@@ -17,7 +17,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     posts.forEach(post => {
       const card = document.createElement("a");
       card.href = "user-page.html";
+      card.setAttribute("data-postid", post._id);
       card.className = "transform transition duration-300 hover:scale-105";
+
+      // Save postId into sessionStorage on click
+      card.addEventListener("click", () => {
+        sessionStorage.setItem("postIdClicked", post._id);
+      });
 
       const cardInner = document.createElement("div");
       cardInner.className = "glass p-6 rounded-xl shadow-xl space-y-4 cursor-pointer";

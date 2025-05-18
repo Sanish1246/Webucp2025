@@ -3,6 +3,7 @@ import { Post } from '../models/Post.js';
 import express from 'express';
 import fileUpload from 'express-fileupload';
 import fs from 'fs';
+import mongoose from 'mongoose'
 
 const __dirname = import.meta.dirname;
 const postRoute = express.Router();
@@ -102,7 +103,7 @@ postRoute.get('/api/post', async (req, res) => {
 
     const username = req.session.user.username;
 
-    const userPosts = await Post.find({ username }).sort({ _id: -1 }); // newest first
+    const userPosts = await Post.find({ username }).sort({ _id: -1 });
 
     res.status(200).json({ posts: userPosts });
 
@@ -111,6 +112,33 @@ postRoute.get('/api/post', async (req, res) => {
     res.status(500).json({ error: 'Server error while fetching posts' });
   }
 });
+
+postRoute.get('/api/post/user-page', async (req, res) => {
+  try {
+    const { id } = req.query;
+
+    if (!id) {
+      return res.status(400).json({ error: 'Missing post ID in query' });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid post ID format' });
+    }
+
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    res.status(200).json({ post });
+
+  } catch (error) {
+    console.error('Error fetching post by ID:', error);
+    res.status(500).json({ error: 'Server error while fetching post' });
+  }
+});
+
 
 
 export default postRoute;
