@@ -8,6 +8,10 @@
     <script type="module" src="JS/user-page.js"></script>
     <script type="module" src="JS/search-button.js"></script>
     <style>
+      #heartIcon.liked {
+        transform: scale(1.1);
+      }
+
       .fade-in {
         animation: fadeIn 1.2s ease-in forwards;
       }
@@ -111,13 +115,23 @@
       }
 
       @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       @keyframes slideUp {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
 
       /* Blood Drip Animation */
@@ -142,16 +156,39 @@
         z-index: 50;
       }
 
-      .theme-dramatic .drip:nth-child(1) { left: 20%; animation-delay: 0s; }
-      .theme-dramatic .drip:nth-child(2) { left: 40%; animation-delay: 0.8s; }
-      .theme-dramatic .drip:nth-child(3) { left: 60%; animation-delay: 1.5s; }
-      .theme-dramatic .drip:nth-child(4) { left: 80%; animation-delay: 2.2s; }
+      .theme-dramatic .drip:nth-child(1) {
+        left: 20%;
+        animation-delay: 0s;
+      }
+      .theme-dramatic .drip:nth-child(2) {
+        left: 40%;
+        animation-delay: 0.8s;
+      }
+      .theme-dramatic .drip:nth-child(3) {
+        left: 60%;
+        animation-delay: 1.5s;
+      }
+      .theme-dramatic .drip:nth-child(4) {
+        left: 80%;
+        animation-delay: 2.2s;
+      }
 
       @keyframes drip {
-        0% { transform: translateY(0); opacity: 0; }
-        10% { opacity: 1; }
-        80% { transform: translateY(20px); opacity: 0.8; }
-        100% { transform: translateY(60px); opacity: 0; }
+        0% {
+          transform: translateY(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        80% {
+          transform: translateY(20px);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(60px);
+          opacity: 0;
+        }
       }
 
       .blood-drip-container {
@@ -164,11 +201,11 @@
 
       /* ========== Honest Theme Styles ========== */
       .theme-honest .dynamic-bg {
-        background-color: #FFF9E5; /* Matches the body background */
+        background-color: #fff9e5; /* Matches the body background */
       }
 
       .theme-honest .dynamic-font-color {
-        color: #2C2C2C; /* Primary text color */
+        color: #2c2c2c; /* Primary text color */
       }
 
       .theme-honest .dynamic-font {
@@ -177,55 +214,55 @@
 
       .theme-honest .dynamic-navbar {
         background-color: rgba(255, 255, 255, 0.8);
-        border-bottom: 1px solid #DDD;
+        border-bottom: 1px solid #ddd;
         backdrop-filter: blur(8px);
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
       }
 
       .theme-honest .dynamic-card {
-        background-color: #FFFFFF;
-        color: #2C2C2C;
-        border: 1px solid #E0DAD2;
+        background-color: #ffffff;
+        color: #2c2c2c;
+        border: 1px solid #e0dad2;
         border-radius: 0.75rem;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
       }
 
       .theme-honest .dynamic-label {
-        color: #457B9D; /* Soft blue for section headers */
+        color: #457b9d; /* Soft blue for section headers */
         font-weight: 600;
       }
 
       .theme-honest .dynamic-subtext {
-        color: #6BAEDC; /* Accent subtext used under username */
+        color: #6baedc; /* Accent subtext used under username */
         font-style: italic;
       }
 
       .theme-honest .dynamic-badge {
-        background-color: #FFFAE3; /* Light yellow badge bg */
-        border: 1px solid #FFCD4B;  /* Golden yellow border */
-        color: #B78600;             /* Warm yellow text */
+        background-color: #fffae3; /* Light yellow badge bg */
+        border: 1px solid #ffcd4b; /* Golden yellow border */
+        color: #b78600; /* Warm yellow text */
         padding: 2px 8px;
         border-radius: 9999px;
         font-size: 0.75rem;
       }
 
       .theme-honest .dynamic-media {
-        border: 1px solid #DDD;
+        border: 1px solid #ddd;
         border-radius: 0.375rem;
         overflow: hidden;
       }
 
       .theme-honest .dynamic-footer {
-        background-color: #EDF3F8;
-        color: #457B9D;
-        border-top: 1px solid #C3DFF0;
+        background-color: #edf3f8;
+        color: #457b9d;
+        border-top: 1px solid #c3dff0;
         font-size: 0.875rem;
         text-align: center;
         padding: 1rem;
       }
 
       .theme-honest .dynamic-icon:hover {
-        color: #FFCD4B; /* Icon hover effect consistent with HTML */
+        color: #ffcd4b; /* Icon hover effect consistent with HTML */
         transition: color 0.2s ease;
       }
 
@@ -235,15 +272,15 @@
 
       /* ========== Irony Theme Styles ========== */
       .theme-ironic .dynamic-bg {
-        background-color: #FCE7EF; /* Soft pink background */
+        background-color: #fce7ef; /* Soft pink background */
       }
 
       .theme-ironic .dynamic-font-color {
-        color: #4B0000; /* Dark wine red – serious yet dramatic */
+        color: #4b0000; /* Dark wine red – serious yet dramatic */
       }
 
       .theme-ironic .dynamic-font {
-        font-family: 'Cinzel', serif;
+        font-family: "Cinzel", serif;
         font-weight: 400;
       }
 
@@ -257,45 +294,45 @@
 
       .theme-ironic .dynamic-card {
         background-color: white;
-        color: #4B0000;
-        border: 2px dashed #F9A8D4;
+        color: #4b0000;
+        border: 2px dashed #f9a8d4;
         border-radius: 0.75rem;
         box-shadow: 0 4px 12px rgba(255, 100, 150, 0.1);
         font-style: italic;
       }
 
       .theme-ironic .dynamic-label {
-        color: #DC2626; /* Bold red accent */
+        color: #dc2626; /* Bold red accent */
         font-weight: bold;
         font-style: italic;
       }
 
       .theme-ironic .dynamic-subtext {
-        color: #6B7280; /* gray-600 */
+        color: #6b7280; /* gray-600 */
         font-style: italic;
         font-weight: bold;
       }
 
       .theme-ironic .dynamic-badge {
-        background-color: #FCE7EF;
-        border: 1px solid #F9A8D4;
-        color: #9B1C36; /* Deep pink/red */
+        background-color: #fce7ef;
+        border: 1px solid #f9a8d4;
+        color: #9b1c36; /* Deep pink/red */
         padding: 2px 10px;
         font-size: 0.75rem;
-        font-family: 'Courier New', monospace;
+        font-family: "Courier New", monospace;
         border-radius: 9999px;
       }
 
       .theme-ironic .dynamic-media {
-        border: 2px dashed #F9A8D4;
+        border: 2px dashed #f9a8d4;
         border-radius: 0.5rem;
         overflow: hidden;
       }
 
       .theme-ironic .dynamic-footer {
         background-color: rgba(249, 213, 217, 0.8); /* pink-200/80 */
-        color: #DC2626;
-        border-top: 1px solid #F9A8D4;
+        color: #dc2626;
+        border-top: 1px solid #f9a8d4;
         font-style: normal;
         font-size: 0.875rem;
         text-align: center;
@@ -303,14 +340,13 @@
       }
 
       .theme-ironic .dynamic-icon:hover {
-        color: #F87171; /* Lighter pink-red hover */
+        color: #f87171; /* Lighter pink-red hover */
         transition: color 0.2s ease-in-out;
       }
 
       .theme-ironic .dynamic-audio {
         display: none;
       }
-      
     </style>
   </head>
 
@@ -402,6 +438,19 @@
                   Final Bow
                 </p>
               </div>
+              <!-- Like Button -->
+              <button
+                id="likeButton"
+                data-liked="false"
+                class="flex items-center space-x-1 group ml-2"
+                title="Like this page"
+              >
+                <i
+                  data-feather="heart"
+                  id="heartIcon"
+                  class="transition-colors duration-300 group-hover:text-red-400"
+                ></i>
+              </button>
             </div>
             <span
               class="text-sm px-2 py-1 rounded-full dynamic-badge theme-type"
@@ -527,6 +576,24 @@
 
     <script>
       feather.replace();
+      const likeButton = document.getElementById("likeButton");
+      const heartIcon = document.getElementById("heartIcon");
+
+      likeButton.addEventListener("click", () => {
+        const isLiked = likeButton.getAttribute("data-liked") === "true";
+        const newLikedState = !isLiked;
+
+        likeButton.setAttribute("data-liked", newLikedState);
+        heartIcon.setAttribute(
+          "stroke",
+          newLikedState ? "#DC2626" : "currentColor"
+        );
+        heartIcon.setAttribute("fill", newLikedState ? "#DC2626" : "none");
+        likeButton.setAttribute(
+          "title",
+          newLikedState ? "Dislike this page" : "Like this page"
+        );
+      });
     </script>
   </body>
 </html>
