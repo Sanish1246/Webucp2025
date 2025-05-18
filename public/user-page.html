@@ -36,117 +36,281 @@
         }
       }
 
-      /* ========== Dramatic Theme Styles ========== */
-      .theme-dramatic .dynamic-bg {
-        background-color: #ece2d0;
-      }
+      /* ========== DRAMATIC BLOOD THEME ========== */
 
-      .theme-dramatic .dynamic-font-color {
-        color: #2d2b22;
+      .theme-dramatic .dynamic-bg {
+        background: linear-gradient(to bottom right, #000000, #1a1a1a, #330000);
+        color: #f2f2f2;
       }
 
       .theme-dramatic .dynamic-font {
         font-family: Arial, Helvetica, sans-serif;
       }
 
+      .theme-dramatic .dynamic-font-color {
+        color: #f2f2f2;
+      }
+
       .theme-dramatic .dynamic-navbar {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(26, 26, 26, 0.6);
+        border-bottom: 1px solid #7a0f0f;
         backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
       }
 
       .theme-dramatic .dynamic-card {
-        background-color: #faf1e9;
-        color: #2d2b22;
+        background-color: rgba(26, 26, 26, 0.8);
+        color: #f2f2f2;
+        border: 1px solid #7a0f0f;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
       }
 
-      .theme-dramatic .dynamic-label {
-        color: #4e4b42;
-      }
-
+      .theme-dramatic .dynamic-label,
       .theme-dramatic .dynamic-subtext {
-        color: #4e4b42;
+        color: #e0d7d7;
       }
 
       .theme-dramatic .dynamic-badge {
-        background-color: #faf1e9;
-        border: 1px solid #b29b7b;
-        color: #2d2b22;
+        background-color: rgba(122, 15, 15, 0.4);
+        color: #f2f2f2;
+        border: 1px solid #e11d48;
+        border-radius: 999px;
+        padding: 0.25rem 0.75rem;
       }
 
       .theme-dramatic .dynamic-media {
-        border: 1px solid #b29b7b;
+        border: 1px solid #7a0f0f;
+        border-radius: 0.5rem;
+        overflow: hidden;
       }
 
       .theme-dramatic .dynamic-footer {
-        background-color: rgba(224, 206, 177, 0.7);
-        color: #2d2b22;
-        border-top: 1px solid rgba(178, 155, 123, 0.3);
+        background-color: rgba(17, 17, 17, 0.7);
+        color: #bbb;
+        border-top: 1px solid rgba(122, 15, 15, 0.5);
       }
 
       .theme-dramatic .dynamic-icon:hover {
-        color: #747d86;
+        color: #ff1a1a;
       }
 
-      .theme-dramatic .dynamic-audio {
+      /* Add dramatic flair to text elements */
+      .theme-dramatic .dynamic-text-accent {
+        color: #f43f5e;
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      /* Dramatic fade-in and slide-up animations */
+      .theme-dramatic .fade-in {
+        animation: fadeIn 1.2s ease-in forwards;
+      }
+
+      .theme-dramatic .slide-up {
+        animation: slideUp 1s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      /* Blood Drip Animation */
+      .theme-dramatic .blood-drip-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        pointer-events: none;
+        z-index: 50;
+      }
+
+      .theme-dramatic .drip {
+        position: absolute;
+        width: 6px;
+        height: 20px;
+        background: #7a0f0f;
+        border-radius: 50%;
+        top: 0;
+        animation: drip 2.5s infinite ease-in-out;
+        z-index: 50;
+      }
+
+      .theme-dramatic .drip:nth-child(1) { left: 20%; animation-delay: 0s; }
+      .theme-dramatic .drip:nth-child(2) { left: 40%; animation-delay: 0.8s; }
+      .theme-dramatic .drip:nth-child(3) { left: 60%; animation-delay: 1.5s; }
+      .theme-dramatic .drip:nth-child(4) { left: 80%; animation-delay: 2.2s; }
+
+      @keyframes drip {
+        0% { transform: translateY(0); opacity: 0; }
+        10% { opacity: 1; }
+        80% { transform: translateY(20px); opacity: 0.8; }
+        100% { transform: translateY(60px); opacity: 0; }
+      }
+
+      .blood-drip-container {
         display: none;
+      }
+
+      .theme-dramatic .blood-drip-container {
+        display: block;
       }
 
       /* ========== Honest Theme Styles ========== */
       .theme-honest .dynamic-bg {
-        background-color: #ffffff;
+        background-color: #FFF9E5; /* Matches the body background */
       }
 
       .theme-honest .dynamic-font-color {
-        color: #2f3e46;
+        color: #2C2C2C; /* Primary text color */
       }
 
       .theme-honest .dynamic-font {
-        font-family: "Segoe UI", Roboto, sans-serif;
+        font-family: "Inter", sans-serif; /* Matches HTML font */
       }
 
       .theme-honest .dynamic-navbar {
         background-color: rgba(255, 255, 255, 0.8);
-        border-bottom: 1px solid #d6dee2;
-        backdrop-filter: blur(6px);
+        border-bottom: 1px solid #DDD;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
       }
 
       .theme-honest .dynamic-card {
-        background-color: #f9fbfc;
-        color: #2f3e46;
-        border: 1px solid #e1e8eb;
+        background-color: #FFFFFF;
+        color: #2C2C2C;
+        border: 1px solid #E0DAD2;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
       }
 
       .theme-honest .dynamic-label {
-        color: #5a6e73;
+        color: #457B9D; /* Soft blue for section headers */
+        font-weight: 600;
       }
 
       .theme-honest .dynamic-subtext {
-        color: #748c94;
+        color: #6BAEDC; /* Accent subtext used under username */
+        font-style: italic;
       }
 
       .theme-honest .dynamic-badge {
-        background-color: #e9f1f4;
-        border: 1px solid #b0c7cd;
-        color: #2f3e46;
+        background-color: #FFFAE3; /* Light yellow badge bg */
+        border: 1px solid #FFCD4B;  /* Golden yellow border */
+        color: #B78600;             /* Warm yellow text */
+        padding: 2px 8px;
+        border-radius: 9999px;
+        font-size: 0.75rem;
       }
 
       .theme-honest .dynamic-media {
-        border: 1px solid #d0dce0;
+        border: 1px solid #DDD;
+        border-radius: 0.375rem;
+        overflow: hidden;
       }
 
       .theme-honest .dynamic-footer {
-        background-color: #f2f6f8;
-        color: #5a6e73;
-        border-top: 1px solid #e0e7ea;
+        background-color: #EDF3F8;
+        color: #457B9D;
+        border-top: 1px solid #C3DFF0;
+        font-size: 0.875rem;
+        text-align: center;
+        padding: 1rem;
       }
 
       .theme-honest .dynamic-icon:hover {
-        color: #3d5a73;
+        color: #FFCD4B; /* Icon hover effect consistent with HTML */
+        transition: color 0.2s ease;
       }
 
       .theme-honest .dynamic-audio {
+        display: none; /* Audio is autoplay + hidden */
+      }
+
+      /* ========== Irony Theme Styles ========== */
+      .theme-ironic .dynamic-bg {
+        background-color: #FCE7EF; /* Soft pink background */
+      }
+
+      .theme-ironic .dynamic-font-color {
+        color: #4B0000; /* Dark wine red – serious yet dramatic */
+      }
+
+      .theme-ironic .dynamic-font {
+        font-family: 'Cinzel', serif;
+        font-weight: 400;
+      }
+
+      .theme-ironic .dynamic-navbar {
+        background-color: rgba(249, 213, 217, 0.8); /* pink-200/80 */
+        border-bottom: 1px solid rgba(249, 168, 212, 0.6); /* pink-300/60 */
+        backdrop-filter: blur(6px);
+        border-radius: 0 0 1rem 1rem;
+        box-shadow: 0 4px 8px rgba(255, 0, 100, 0.1);
+      }
+
+      .theme-ironic .dynamic-card {
+        background-color: white;
+        color: #4B0000;
+        border: 2px dashed #F9A8D4;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(255, 100, 150, 0.1);
+        font-style: italic;
+      }
+
+      .theme-ironic .dynamic-label {
+        color: #DC2626; /* Bold red accent */
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .theme-ironic .dynamic-subtext {
+        color: #6B7280; /* gray-600 */
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      .theme-ironic .dynamic-badge {
+        background-color: #FCE7EF;
+        border: 1px solid #F9A8D4;
+        color: #9B1C36; /* Deep pink/red */
+        padding: 2px 10px;
+        font-size: 0.75rem;
+        font-family: 'Courier New', monospace;
+        border-radius: 9999px;
+      }
+
+      .theme-ironic .dynamic-media {
+        border: 2px dashed #F9A8D4;
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      .theme-ironic .dynamic-footer {
+        background-color: rgba(249, 213, 217, 0.8); /* pink-200/80 */
+        color: #DC2626;
+        border-top: 1px solid #F9A8D4;
+        font-style: normal;
+        font-size: 0.875rem;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .theme-ironic .dynamic-icon:hover {
+        color: #F87171; /* Lighter pink-red hover */
+        transition: color 0.2s ease-in-out;
+      }
+
+      .theme-ironic .dynamic-audio {
         display: none;
       }
+      
     </style>
   </head>
 
@@ -185,6 +349,13 @@
         </li>
       </ul>
     </nav>
+
+    <div class="blood-drip-container theme-dramatic">
+      <div class="drip"></div>
+      <div class="drip"></div>
+      <div class="drip"></div>
+      <div class="drip"></div>
+    </div>
 
     <!-- Main Content -->
     <main
