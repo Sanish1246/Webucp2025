@@ -107,3 +107,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error fetching or rendering post:", err);
   }
 });
+
+async function openLogin(event){
+    event.preventDefault();
+      try {
+  const response = await fetch('/login');
+  const data = await response.json();
+  if (data.email) {
+    window.location.href = './HTML/user-page.html';
+  } else {
+    window.location.href = './HTML/account.html';
+  }
+  console.log(data);
+} catch (error) {
+  console.error('Error:', error);
+}
+}
